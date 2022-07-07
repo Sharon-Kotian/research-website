@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en" dir="ltr">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Mail Inbox</title>
+<!--	<script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>-->
+<!--    <link href="https://netdna.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">-->
+<!--	<script src="https://netdna.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>-->
+
+	<link rel="icon" href="favicon.ico" type="image/x-icon"> <!-- Favicon-->
+    <!-- plugin css file  -->
+    <link rel="stylesheet" href="../assets/plugin/datatables/responsive.dataTables.min.css">
+    <link rel="stylesheet" href="../assets/plugin/datatables/dataTables.bootstrap5.min.css">
+    <!-- project css file  -->
+    <link rel="stylesheet" href="../assets/css/my-task.style.min.css">
+</head>
+<body class="" style="">
+
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+
+<div id="mytask-layout" class="theme-indigo" style="overflow: hidden;">
+
+    <!-- sidebar -->
+	<div class="sidebar px-4 py-4 py-md-5 me-0">
+        <div class="d-flex flex-column h-100">
+            <a href="../CRM-commons/home.html" class="mb-0 brand-icon">
+                <span class="logo-icon">
+                    <svg  width="35" height="35" fill="currentColor" class="bi bi-clipboard-check" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd" d="M10.854 7.146a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L7.5 9.793l2.646-2.647a.5.5 0 0 1 .708 0z"/>
+                        <path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z"/>
+                        <path d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z"/>
+                    </svg>
+                </span>
+                <span class="logo-text">CRM</span>
+            </a>
+            <!-- Menu: main ul -->
+
+            <ul class="menu-list flex-grow-1 mt-3">
+                <li class="collapsed">
+                    <a class="m-link active" data-bs-toggle="collapse" data-bs-target="#dashboard-Components" href="#">
+                        <i class="icofont-dashboard fs-5"><span>  Communication</span></i>
+                        <!--<span>Client Onboarding Dashboard</span>-->
+                    </a>
+                    <!-- Menu: Sub menu ul -->
+                    <ul class="sub-menu collapse show" id="dashboard-Components">
+                        <li><a class="ms-link" href="../CRM-communication/chat.html"> <span>Chat Portal</span></a></li>
+                        <li><a class="ms-link active" href="#"> <span>Mail Box</span></a></li>
+                    </ul>
+                </li>
+            </ul>
+            <!-- Menu: menu collepce btn -->
+            <button type="button" class="btn btn-link sidebar-mini-btn text-light">
+                <span class="ms-2"><i class="icofont-bubble-right"></i></span>
+            </button>
+        </div>
+    </div>
+
+	<!-- main body area -->
+	<div class="main px-lg-4 px-md-4">
+
+        <!-- Body: Header -->
+		<div class="header">
+            <nav class="navbar py-4">
+                <div class="container-xxl">
+
+<!--                     header rightbar icon -->
+                    <div class="h-right d-flex align-items-center mr-5 mr-lg-0 order-1">
+
+                        <div class="dropdown user-profile ml-2 ml-sm-3 d-flex align-items-center zindex-popover">
+                            <div class="u-info me-2">
+                                <p class="mb-0 text-end line-height-sm "><span class="font-weight-bold">Dylan Hunter</span></p>
+                                <small>Admin Profile</small>
+                            </div>
+                            <a class="nav-link dropdown-toggle pulse p-0" href="#" role="button" data-bs-toggle="dropdown" data-bs-display="static">
+                                <img class="avatar lg rounded-circle img-thumbnail" src="../assets/images/profile_av.png" alt="profile">
+                            </a>
+                            <div class="dropdown-menu rounded-lg shadow border-0 dropdown-animation dropdown-menu-end p-0 m-0">
+                                <div class="card border-0 w280">
+                                    <div class="card-body pb-0">
+                                        <div class="d-flex py-1">
+                                            <img class="avatar rounded-circle" src="../assets/images/profile_av.png" alt="profile">
+                                            <div class="flex-fill ms-3">
+                                                <p class="mb-0"><span class="font-weight-bold">Dylan Hunter</span></p>
+                                                <small class="">Dylan.hunter@gmail.com</small>
+                                            </div>
+                                        </div>
+
+                                        <div><hr class="dropdown-divider border-dark"></div>
+                                    </div>
+                                    <div class="list-group m-2 ">
+                                        <a href="../CRM-commons/landingpage.html" class="list-group-item list-group-item-action border-0 "><i class="icofont-logout fs-6 me-3"></i>Signout</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+<!--                     main menu Search-->
+                    <div class="order-0 col-lg-4 col-md-4 col-sm-12 col-12 mb-3 mb-md-0 ">
+                        <!--<div class="input-group flex-nowrap input-group-lg">
+                            <button type="button" class="input-group-text" id="addon-wrapping"><i class="fa fa-search"></i></button>
+                            <input type="search" class="form-control" placeholder="Search" aria-label="search" aria-describedby="addon-wrapping">
+                            <button type="button" class="input-group-text add-member-top" id="addon-wrappingone" data-bs-toggle="modal" data-bs-target="#addUser"><i class="fa fa-plus"></i></button>
+                        </div>-->
+                    </div>
+
+                </div>
+            </nav>
+        </div>
+
+		<!-- main body area -->
+        <div class="main" style="height: 85vh;">
+            <!-- Body: Body -->
+            <div class="body d-flex">
+                <div class="container-xxl p-0">
+                    <div class="row g-0">
+                        <div class="col-12 d-flex">
+                            <!-- Card: -->
+                            <div class="card card-chat border-right border-top-0 border-bottom-0 " style="height: 85vh; min-width: 200px;">
+                                <div class="px-4 py-3 py-md-4">
+                                    <div class="input-group mb-3">
+                                        <h4 class="fw-bold mb-0"><i class="icofont-inbox"></i>&nbsp;Inbox</h4>
+                                    </div>
+
+                                    <div class="nav nav-pills justify-content-between text-center" role="tablist">
+                                        <button type="button" class="btn btn-dark btn-set-task w-sm-100" data-bs-toggle="modal" data-bs-target="#newmail">&emsp;
+                                            <i class="icofont-plus-circle me-2 fs-6"></i>New Mail&emsp;</button>
+                                    </div>
+                                </div>
+
+                                <div class="tab-content border-top">
+                                    <div class="tab-pane fade show active" id="chat-recent" role="tabpanel">
+                                        <ul class="list-unstyled list-group list-group-custom list-group-flush mb-0">
+                                            <li class="list-group-item px-md-4 py-3 py-md-4"><h6 class="fw mb-0">Folders</h6></li>
+    <!--                                        <li class="list-group-item px-md-4 py-3 py-md-4">-->
+                                            <div class="card card-callout mb-0">
+                                                <div class="card-body">
+                                                    <a class="m-link" href="#" >
+                                                        <i class="icofont-inbox"></i>&nbsp;<span>Inbox</span>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                            <div class="card mb-0">
+                                                <div class="card-body">
+                                                    <a class="m-link" href="#" >
+                                                        <i class="icofont-star"></i>&nbsp;<span>Starred</span>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                            <div class="card mb-0">
+                                                <div class="card-body">
+                                                    <a class="m-link" href="#" >
+                                                        <i class="icofont-book-mark"></i>&nbsp;<span>Important</span>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                            <div class="card mb-0">
+                                                <div class="card-body">
+                                                    <a class="m-link" href="#" >
+                                                        <i class="icofont-forward"></i>&nbsp;<span>Sent</span>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                            <div class="card mb-0">
+                                                <div class="card-body">
+                                                    <a class="m-link" href="#" >
+                                                        <i class="icofont-drawing-tablet"></i>&nbsp;<span>Drafts</span>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                            <div class="card mb-0">
+                                                <div class="card-body">
+                                                    <a class="m-link" href="#" >
+                                                        <i class="icofont-folder"></i>&nbsp;<span>Spam (217)</span>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </ul>
+                                    </div>
+                                    <div class="tab-pane fade" id="chat-groups" role="tabpanel">
+                                        <ul class="list-unstyled list-group list-group-custom list-group-flush mb-0">
+                                            <li class="list-group-item px-md-4 py-3 py-md-4">
+                                                <a href="javascript:void(0);" class="d-flex">
+                                                    <div class="avatar rounded-circle no-thumbnail">WD</div>
+                                                    <div class="flex-fill ms-3 text-truncate">
+                                                        <h6 class="d-flex justify-content-between mb-0"><span>Website Design
+                                                        </span> <small class="msg-time">15/04/2021</small></h6>
+                                                        <span class="text-muted">The point of using Lorem Ipsum</span>
+                                                    </div>
+                                                </a>
+                                            </li>
+                                            <li class="list-group-item px-md-4 py-3 py-md-4">
+                                                <a href="javascript:void(0);" class="d-flex">
+                                                    <div class="avatar rounded-circle no-thumbnail">AD</div>
+                                                    <div class="flex-fill ms-3 text-truncate">
+                                                        <h6 class="d-flex justify-content-between mb-0"><span>App Development
+                                                        </span> <small class="msg-time">13/04/2021</small></h6>
+                                                        <span class="text-muted">If you are going to use a passage</span>
+                                                    </div>
+                                                </a>
+                                            </li>
+                                            <li class="list-group-item px-md-4 py-3 py-md-4">
+                                                <a href="javascript:void(0);" class="d-flex">
+                                                    <div class="avatar rounded-circle no-thumbnail">QC</div>
+                                                    <div class="flex-fill ms-3 text-truncate">
+                                                        <h6 class="d-flex justify-content-between mb-0"><span>Quality Assurance
+                                                        </span> <small class="msg-time">12/04/2021</small></h6>
+                                                        <span class="text-muted">The point of using Lorem Ipsum</span>
+                                                    </div>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Card: -->
+                            <div class="card card-chat border-0  w-100 px-2 px-md-3 py-1 py-md-2" style="height: 85vh;">
+
+                            <div class="card-body">
+                                <div id="patient-table_wrapper" class="dataTables_wrapper dt-bootstrap5 no-footer">
+                                    <div class="row">
+                                        <div class="col-sm-12 col-md-5">
+                                            <div class="dropdown">
+                                                <a class="btn btn-outline-primary dropdown-toggle" href="#" role="button" id="dropdownMenuLink2" data-bs-toggle="dropdown" aria-expanded="false">
+                                                    Action
+                                                </a>
+                                                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                                    <li><a class="dropdown-item" href="#">Mark as read</a></li>
+                                                    <li><a class="dropdown-item" href="#">Mark as unread</a></li>
+                                                    <li><a class="dropdown-item" href="#">Mark as important</a></li>
+                                                    <li><hr class="dropdown-divider" style="border-color: black;"></li>
+                                                    <li><a class="dropdown-item" href="#">Report Spam</a></li>
+                                                    <li><a class="dropdown-item" href="#">Delete</a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-12 col-md-7">
+                                            <div id="patient-table_filter" class="dataTables_filter">
+                                                <label>Search:<input type="search" class="form-control form-control-sm" placeholder="" aria-controls="patient-table"></label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                            <table id="patient-table" class="table table-hover align-middle mb-0 nowrap dataTable no-footer dtr-inline" style="width: 100%;" role="grid" aria-describedby="patient-table_info">
+                                                <thead>
+                                                    <tr role="row">
+                                                        <th tabindex="0" aria-controls="patient-table" rowspan="1" colspan="1" style="width: 10%;" aria-label="Resource No: activate to sort column ascending"></th>
+                                                        <th tabindex="0" aria-controls="patient-table" rowspan="1" colspan="1" style="width: 15%;" aria-label="Name: activate to sort column ascending"></th>
+                                                        <th tabindex="0" aria-controls="patient-table" rowspan="1" colspan="1" style="width: 65%;" aria-label="Email: activate to sort column ascending"></th>
+                                                        <th tabindex="0" aria-controls="patient-table" rowspan="1" colspan="1" style="width: 10%;" aria-label="Mobile No: activate to sort column ascending"></th>
+<!--                                                        <th tabindex="0" aria-controls="patient-table" rowspan="1" colspan="1" style="width: 20%;" aria-label="KYC Compliance: activate to sort column ascending"></th>-->
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                <tr role="row" class="odd">
+                                                    <td class="">
+                                                        <input type="checkbox">&nbsp;
+                                                        <i class="icofont-star" style="font-size: 20px; color: #FFD700;"></i>
+                                                        <i class="icofont-book-mark" style="font-size: 18px; color: red;"></i>
+                                                    </td>
+                                                    <th class=""><a href="#"> South Windsor </a></th>
+                                                    <th class=""><a href="#">70 Bowman St. South Windsor</a></th>
+                                                    <th class="">08:30 AM</th>
+                                                </tr>
+                                                <tr role="row" class="even table-light">
+                                                    <td class="">
+                                                        <input type="checkbox">&nbsp;
+                                                        <i class="icofont-star" style="font-size: 20px; color: #FFD700;"></i>
+                                                        <i class="icofont-book-mark" style="font-size: 18px; color: white; -webkit-text-stroke: 0.8px black;"></i>
+                                                    </td>
+                                                    <td class=""><a href="#">South Windsor</a></td>
+                                                    <td class=""><a href="#">70 Bowman St. South Windsor</a></td>
+                                                    <td class="">09:18 AM</td>
+                                                </tr>
+                                                <tr role="row" class="odd table-light">
+                                                    <td class="">
+                                                        <input type="checkbox">&nbsp;
+                                                        <i class="icofont-star" style="font-size: 20px; color: white; -webkit-text-stroke: 0.8px black;"></i>
+                                                        <i class="icofont-book-mark" style="font-size: 18px; color: red;"></i>
+                                                    </td>
+                                                    <td class=""><a href="#">West Chicago</a></td>
+                                                    <td class=""><a href="#">4 Shirley Ave. West Chicago</a></td>
+                                                    <td class="">10:20 AM</td>
+                                                </tr>
+                                                <tr role="row" class="even">
+                                                    <td class="">
+                                                        <input type="checkbox">&nbsp;
+                                                        <i class="icofont-star" style="font-size: 20px; color: #FFD700;"></i>
+                                                        <i class="icofont-book-mark" style="font-size: 18px; color: red;"></i>
+                                                    </td>
+                                                    <th class=""><a href="#">Melbourne</a></th>
+                                                    <th class=""><a href="#">123 6th St. Melbourne</a></th>
+                                                    <th class="">12:01 PM</th>
+                                                </tr>
+                                                <tr role="row" class="odd table-light">
+                                                    <td class="">
+                                                        <input type="checkbox">&nbsp;
+                                                        <i class="icofont-star" style="font-size: 20px; color: white; -webkit-text-stroke: 0.8px black;"></i>
+                                                        <i class="icofont-book-mark" style="font-size: 18px; color: white; -webkit-text-stroke: 0.8px black;"></i>
+                                                    </td>
+                                                    <td class=""><a href="#">West Chicago</a></td>
+                                                    <td class=""><a href="#">4 Shirley Ave. West Chicago</a></td>
+                                                    <td class="">02:20 PM</td>
+                                                </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-12 col-md-0">
+                                            <div class="dataTables_paginate paging_simple_numbers" id="patient-table_paginate">
+                                                <ul class="pagination">
+                                                    <li class="page-item">
+                                                        <a class="page-link" href="#" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a>
+                                                    </li>
+                                                    <li class="page-item"><a class="page-link" href="#">1</a></li>
+                                                    <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                                    <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                                    <li class="page-item">
+                                                        <a class="page-link" href="#" aria-label="Next"><span aria-hidden="true">&raquo;</span></a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Create task-->
+                        <div class="modal fade" id="newmail" tabindex="-1"  aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered modal-md modal-dialog-scrollable">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title  fw-bold" id="createprojectlLabel"> New Mail</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                     <div class="mb-3">
+<!--                                             <label  class="form-label">First Name</label>-->
+                                         <input class="form-control" type="text" placeholder="To">
+                                     </div>
+                                     <div class="mb-3">
+<!--                                            <label  class="form-label">Last Name</label>-->
+                                        <input class="form-control" type="text" placeholder="Cc">
+                                    </div>
+                                    <div class="mb-3">
+<!--                                        <label  class="form-label">Email</label>-->
+                                        <input class="form-control" type="text" placeholder="Bcc">
+                                    </div>
+                                    <div class="mb-3">
+<!--                                        <label  class="form-label">Mobile Number</label>-->
+                                        <input class="form-control" type="text" placeholder="Subject">
+                                    </div>
+                                    <div class="mb-3">
+<!--                                        <label  class="form-label">Salary</label>-->
+                                        <textarea class="form-control" placeholder="Write something" rows="3"></textarea>
+                                    </div>
+
+                                    <div class="mb-3">
+<!--                                        <label  class="form-label">PAN</label>-->
+<!--                                        <i class="icofont-clip"></i>-->
+                                        <input class="form-control" type="file">
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-dismiss="modal" data-bs-target="#success">Send</button>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+
+                        <!--Success-->
+                        <div class="modal fade" id="success" tabindex="-1"  aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered modal-md modal-dialog-scrollable">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title  fw-bold"> Mail Sent</h5>
+<!--                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>-->
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Close</button>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+<!-- Jquery Core Js -->
+<script src="../assets/bundles/libscripts.bundle.js"></script>
+
+<!-- Jquery Page Js -->
+<script src="../../js/template.js"></script>
+
+
+</body>
+
+</html>

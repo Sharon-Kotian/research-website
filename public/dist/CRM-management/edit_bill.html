@@ -1,0 +1,243 @@
+<!doctype html>
+<html class="no-js" lang="en" dir="ltr">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Edit Bill</title>
+    <link rel="icon" href="favicon.ico" type="image/x-icon"> <!-- Favicon-->
+    <!-- plugin css file  -->
+    <link rel="stylesheet" href="../assets/plugin/datatables/responsive.dataTables.min.css">
+    <link rel="stylesheet" href="../assets/plugin/datatables/dataTables.bootstrap5.min.css">
+    <!-- project css file  -->
+    <link rel="stylesheet" href="../assets/css/my-task.style.min.css">
+</head>
+<body>
+
+<div id="mytask-layout" class="theme-indigo">
+
+    <!-- sidebar -->
+    <div class="sidebar px-4 py-4 py-md-5 me-0">
+        <div class="d-flex flex-column h-100">
+            <a href="../CRM-commons/home.html" class="mb-0 brand-icon">
+                <span class="logo-icon">
+                    <svg  width="35" height="35" fill="currentColor" class="bi bi-clipboard-check" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd" d="M10.854 7.146a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L7.5 9.793l2.646-2.647a.5.5 0 0 1 .708 0z"/>
+                        <path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z"/>
+                        <path d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z"/>
+                    </svg>
+                </span>
+                <span class="logo-text">CRM</span>
+            </a>
+            <!-- Menu: main ul -->
+
+            <ul class="menu-list flex-grow-1 mt-3">
+                <li class="collapsed">
+                    <a class="m-link" data-bs-toggle="collapse" data-bs-target="#dashboard-Components" href="#">
+                        <i class="icofont-dashboard fs-5"><span>  Firm Billing</span></i>  <span class="arrow icofont-dotted-down ms-auto text-end fs-5"></span>
+                        <!--<span>Client Onboarding Dashboard</span>-->
+                    </a>
+                    <!-- Menu: Sub menu ul -->
+                    <ul class="sub-menu collapse show" id="dashboard-Components">
+                        <li><a class="ms-link" href="../CRM-management/billing_dashboard.html"> <span>Billing Dashboard</span></a></li>
+                        <li><a class="ms-link" href="../CRM-management/create_new_bill.html"> <span>Create New Bill</span></a></li>
+                        <!--<li><a class="ms-link active" href="#"> <span>Edit Bill</span></a></li>-->
+                        <!--<li><a class="ms-link" href="../CRM-management/delete_bill.html"> <span>Delete--> Bill</span></a></li>
+                        <li><a class="ms-link" href="#"> <span>Bill Recycle Bin</span></a></li>
+                    </ul>
+                </li>
+            </ul>
+            <!-- Menu: menu collepce btn -->
+            <button type="button" class="btn btn-link sidebar-mini-btn text-light">
+                <span class="ms-2"><i class="icofont-bubble-right"></i></span>
+            </button>
+        </div>
+    </div>
+
+    <!-- main body area -->
+    <div class="main px-lg-4 px-md-4">
+
+        <!-- Body: Header -->
+        <div class="header">
+            <nav class="navbar py-4">
+                <div class="container-xxl">
+
+                    <!-- header rightbar icon -->
+                    <div class="h-right d-flex align-items-center mr-5 mr-lg-0 order-1">
+
+                        <div class="dropdown user-profile ml-2 ml-sm-3 d-flex align-items-center zindex-popover">
+                            <div class="u-info me-2">
+                                <p class="mb-0 text-end line-height-sm "><span class="font-weight-bold">Dylan Hunter</span></p>
+                                <small>Admin Profile</small>
+                            </div>
+                            <a class="nav-link dropdown-toggle pulse p-0" href="#" role="button" data-bs-toggle="dropdown" data-bs-display="static">
+                                <img class="avatar lg rounded-circle img-thumbnail" src="../assets/images/profile_av.png" alt="profile">
+                            </a>
+                            <div class="dropdown-menu rounded-lg shadow border-0 dropdown-animation dropdown-menu-end p-0 m-0">
+                                <div class="card border-0 w280">
+                                    <div class="card-body pb-0">
+                                        <div class="d-flex py-1">
+                                            <img class="avatar rounded-circle" src="../assets/images/profile_av.png" alt="profile">
+                                            <div class="flex-fill ms-3">
+                                                <p class="mb-0"><span class="font-weight-bold">Dylan Hunter</span></p>
+                                                <small class="">Dylan.hunter@gmail.com</small>
+                                            </div>
+                                        </div>
+
+                                        <div><hr class="dropdown-divider border-dark"></div>
+                                    </div>
+                                    <div class="list-group m-2 ">
+                                        <a href="../CRM-commons/landingpage.html" class="list-group-item list-group-item-action border-0 "><i class="icofont-logout fs-6 me-3"></i>Signout</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- main menu Search-->
+                    <div class="order-0 col-lg-4 col-md-4 col-sm-12 col-12 mb-3 mb-md-0 ">
+                        <!--<div class="input-group flex-nowrap input-group-lg">
+                            <button type="button" class="input-group-text" id="addon-wrapping"><i class="fa fa-search"></i></button>
+                            <input type="search" class="form-control" placeholder="Search" aria-label="search" aria-describedby="addon-wrapping">
+                            <button type="button" class="input-group-text add-member-top" id="addon-wrappingone" data-bs-toggle="modal" data-bs-target="#addUser"><i class="fa fa-plus"></i></button>
+                        </div>-->
+                    </div>
+
+                </div>
+            </nav>
+        </div>
+
+        <!-- Body: Body -->
+        <div class="body d-flex py-3">
+            <div class="container-xxl">
+
+                <div class="row align-items-center">
+                    <div class="border-0 mb-4">
+                        <div class="card-header py-3 no-bg bg-transparent d-flex align-items-center px-0 justify-content-between border-bottom flex-wrap">
+                            <h3 class="fw-bold mb-0">Edit Bill</h3>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row align-item-center">
+                    <div class="col-md-12">
+                        <div class="card mb-3">
+                            <!--<div class="card-header py-3 d-flex justify-content-between bg-transparent border-bottom-0">
+                                <h6 class="mb-0 fw-bold ">Basic Form</h6>
+                            </div>-->
+                            <div class="card-body">
+                                <form>
+                                    <div class="row g-3 align-items-center">
+                                        <div class="col-md-6">
+                                            <label class="form-label">Bill Number</label>
+                                            <input type="text" class="form-control" required="">
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label class="form-label">Date</label>
+                                            <input type="date" class="form-control" required="">
+                                        </div>
+                                        <div class="col-md-12">
+                                            <label class="form-label">Internal Contact Person</label>
+                                            <input type="text" class="form-control" required="">
+                                        </div>
+                                        <div class="col-md-12">
+                                            <label class="form-label">Customer Name</label>
+                                            <input type="text" class="form-control" required="">
+                                        </div>
+                                        <div class="col-md-12">
+                                            <label class="form-label">Contact Person</label>
+                                            <input type="text" class="form-control" required="">
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label class="form-label">Client GST Number</label>
+                                            <input type="text" class="form-control" required="">
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label class="form-label">Terms Of Payment</label>
+                                            <input type="text" class="form-control" required="">
+                                        </div>
+                                        <div class="col-sm-12">
+                                            <label class="form-label">Particulars</label>
+                                            <table id="patient-table" class="table table-hover align-middle mb-0 nowrap dataTable no-footer dtr-inline" style="width: 100%;" role="grid" aria-describedby="patient-table_info">
+                                                <thead>
+                                                    <tr role="row">
+                                                        <th tabindex="0" aria-controls="patient-table" rowspan="1" colspan="1" style="width: 10%;" aria-label="Sr. No.: activate to sort column ascending">Sr. No.</th>
+                                                        <th tabindex="0" aria-controls="patient-table" rowspan="1" colspan="1" style="width: 70%;" aria-label="Description: activate to sort column ascending">Description</th>
+                                                        <th tabindex="0" aria-controls="patient-table" rowspan="1" colspan="1" style="width: 20%;" aria-label="Amount: activate to sort column ascending">Amount</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                <tr role="row" class="odd">
+                                                    <td tabindex="0" class="" style="">0001</td>
+                                                    <td><input type="text" class="form-control" required=""></td>
+                                                    <td><input type="number" class="form-control" required=""></td>
+                                                </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <label class="form-label">Amount In Words</label>
+                                            <input type="text" class="form-control" required="">
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label class="form-label">Firm Name</label>
+                                            <input type="text" class="form-control" required="">
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label class="form-label">Firm Contact Number</label>
+                                            <input type="text" class="form-control" required="">
+                                        </div>
+                                        <div class="col-md-12">
+                                            <label class="form-label">Firm Address</label>
+                                            <input type="text" class="form-control" required="">
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label class="form-label">Firm Email Id</label>
+                                            <input type="email" class="form-control" required="">
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label class="form-label">Firm PAN</label>
+                                            <input type="text" class="form-control" required="">
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label class="form-label">Firm Bank Details</label>
+                                            <input type="text" class="form-control" required="">
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label class="form-label">Firm GST Number</label>
+                                            <input type="text" class="form-control" required="">
+                                        </div>
+                                        <div class="col-md-12">
+                                            <label class="form-label">Remarks</label>
+                                            <textarea class="form-control" rows="3"></textarea>
+                                        </div>
+                                    </div>
+
+                                    <button type="submit" class="btn btn-primary mt-4">Save Changes</button>
+                                </form>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<!-- Jquery Core Js -->
+<script src="../assets/bundles/libscripts.bundle.js"></script>
+
+<!-- Plugin Js-->
+<script src="../assets/bundles/apexcharts.bundle.js"></script>
+<script src="../assets/bundles/dataTables.bundle.js"></script>
+
+<!-- Jquery Page Js -->
+<script src="../../js/template.js"></script>
+<script src="../js/page/index.js"></script>
+
+</body>
+</html>
