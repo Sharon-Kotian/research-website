@@ -41,7 +41,7 @@
                             <!-- Image block -->
                             <div class="justify-content-center" style="">
                                 <!--<img src="{{url('assets/images/login-img.svg')}}" alt="login-img">-->
-                                <img class="mr-100 border-2 bg-dark" src="{{url('mit_research.png')}}" alt="" width=450 height=350><br><br>
+                                <img class="mr-100 border-2 " src="{{url('mit_research.png')}}" alt="" width=450 height=350><br><br>
                             </div>
                         </div>
                     </div>

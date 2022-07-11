@@ -15,11 +15,12 @@
 <body>
 
 <div id="mytask-layout" class="theme-indigo">
+<?php $user = Auth::guard('admin')->user(); ?>
 
     <!-- sidebar -->
     <div class="sidebar px-4 py-4 py-md-5 me-0">
         <div class="d-flex flex-column h-100">
-            <a href="index.html" class="mb-0 brand-icon">
+            <a href="{{url('user/dashboard')}}" class="mb-0 brand-icon">
                 <span class="logo-icon">
                     <svg  width="35" height="35" fill="currentColor" class="bi bi-clipboard-check" viewBox="0 0 16 16">
                         <path fill-rule="evenodd" d="M10.854 7.146a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L7.5 9.793l2.646-2.647a.5.5 0 0 1 .708 0z"/>
@@ -33,11 +34,12 @@
             <ul class="menu-list flex-grow-1 mt-3">
                 
                 <li class="collapsed">
-                    <a class="m-link" data-bs-toggle="collapse" data-bs-target="#client-Components" href="#"><i
-                            class="icofont-user-male"></i> <span>My Profile</span> <span class="arrow icofont-dotted-down ms-auto text-end fs-5"></span></a>
-                    <!-- Menu: Sub menu ul -->
-                    <ul class="sub-menu collapse" id="client-Components">
-                        <li><a class="ms-link" href="{{url('/user/education')}}"> <span>Education</span></a></li>
+                    <a class="m-link" href="{{url('/user/profile')}}/{{$user->id}}"><i
+                            class="icofont-user-male"></i> <span>My Profile</span> </a></li>
+                            <li><a class="m-link" href="{{url('/user/education')}}"><i class="icofont-book-alt"></i> <span>Education</span></a></li>
+
+                            
+                        
                         
 
                         <li class="collapsed">
@@ -51,11 +53,13 @@
                                 </ul>
                         </li>
 
-                        <li><a class="ms-link" href="{{url('/user/project')}}"> <span>Projects</span></a></li>
-                        <li><a class="ms-link" href="{{url('/user/consultancy')}}"> <span>Consultancy</span></a></li>
-                        <li><a class="ms-link" href="{{url('/user/membership')}}"> <span>Membership</span></a></li>
-                    </ul>
-                </li>
+                        
+                   
+                    <!-- Menu: Sub menu ul -->
+                    
+                    <li><a class="m-link" href="{{url('/user/project')}}"><i class="icofont-atom"></i> <span>Projects</span></a></li>
+                        <li><a class="m-link" href="{{url('/user/consultancy')}}"><i class="icofont-users-alt-2"></i> <span>Consultancy</span></a></li>
+                        <li><a class="m-link" href="{{url('/user/membership')}}"><i class="icofont-company"></i> <span>Membership</span></a></li>
                 
             </ul>
 
@@ -173,10 +177,11 @@
                                         <p><b>Authors/Co-Authors :</b> {{$edu->authors_co_authors}}</p>
                                         <p><b>Status :</b> {{$edu->status}}</p>
                                         <p><b>Volume :</b> {{$edu->volume}}</p>
+                                        <p><b>Citation :</b> {{$edu->citation}}</p>
                                         <p><b>Page Number :</b> {{$edu->page_number}}</p>
                                         <p><b>Paper Link :</b> <a href="{{$edu->paper_link}}">{{$edu->paper_link}}</a></p>
 
-                                        <p><b>From :</b> {{$edu->start_date}} &nbsp&nbsp  <b>To :</b> {{$edu->end_date}}</p>
+                                        <p><b>From :</b> {{$edu->start_date}} &nbsp&nbsp  </p>
                                         <p>{{$edu->description}}</p>
                                     </div>
                                     <a href="{{url('/user/editPaper')}}/{{$edu->id}}" class="btn btn-dark btn-sm mt-1"><i class="icofont-edit-alt me-2 fs-6"></i>Edit Paper</a>
@@ -297,15 +302,20 @@
                             <input name="paper_link" type="text" class="form-control" id="exampleFormControlInput677" placeholder="Enter Paper Link">
                         </div>
                         
+                        <div class="mb-3">
+                            <label for="exampleFormControlInput677" class="form-label">Citation</label>
+                            <input name="citation" type="text" class="form-control" id="exampleFormControlInput677" placeholder="Enter Citation">
+                        </div>
+
                         <div class="mb-3">          
-                            <label for="exampleFormControlTextarea78" class="form-label">Description (optional)</label>
+                            <label for="exampleFormControlTextarea78" class="form-label">Abstract (optional)</label>
                             <textarea name="description" class="form-control" id="exampleFormControlTextarea78" rows="3" placeholder="Add any extra details"></textarea>
                         </div> 
                         <div class="mb-3">          
                             <label for="exampleFormControlTextarea78" class="form-label">Add PDF of Paper</label>
                             <input type="file" name="paper_pdf" accept="application/pdf">
-                            <label for="exampleFormControlTextarea78" class="form-label">View pdf</label>
-                            <button type="submit" class="btn btn-primary" onclick=" window.open true;">View pdf</button>
+
+                            
                         </div> 
                         
                         

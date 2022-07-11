@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=Edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     
-    <title>:: My-Profile:: Education</title>
+    <title>:: My-Profile:: FDP</title>
     <link rel="icon" href="favicon.ico" type="image/x-icon"> <!-- Favicon-->
     <!-- project css file  -->
     <link rel="stylesheet" href="http://localhost:8000/assets/css/my-task.style.min.css">
@@ -68,6 +68,7 @@
         </div>
     </div>
 
+
     <!-- main body area -->
     <div class="main px-lg-4 px-md-4">
 
@@ -96,9 +97,11 @@
                                             <div class="flex-fill ms-3">
                                                 <p class="mb-0"><span class="font-weight-bold">{{$user->firstName}} {{$user->lastName}}</span></p>
                                                 <small class="">{{$user->email}}</small>
+
+                                                
                                             </div>
                                             <div style="display:flex;margin-left:-100px;text-align:left;">
-                                            <a href="{{url('logout')}}">Logout</a>
+                                                <a href="{{url('logout')}}">Logout</a>
                                             </div>
                                         </div>
                                     </div>
@@ -130,75 +133,18 @@
                     <div class="col-md-12">
                         <div class="card border-0 mb-4 no-bg">
                             <div class="card-header py-3 px-0 d-sm-flex align-items-center  justify-content-between border-bottom">
-                                <h3 class=" fw-bold flex-fill mb-0 mt-sm-0">Education</h3>
-                                <button type="button" class="btn btn-dark me-1 mt-1 w-sm-100" data-bs-toggle="modal" data-bs-target="#createemp"><i class="icofont-plus-circle me-2 fs-6"></i>Add Education</button>
+                                <h3 class=" fw-bold flex-fill mb-0 mt-sm-0">FDPs</h3>
                                 
                             </div>
                         </div>
                     </div>
                 </div><!-- Row End -->
-                <div class="row g-3 row-cols-1 row-cols-sm-1 row-cols-md-1 row-cols-lg-2 row-cols-xl-2 row-cols-xxl-2 row-deck py-1 pb-4">
-                
-                <?php
-                    $edus=\App\Models\Education::where("user_id",$user->id)->get();
-                ?>
-                
-                @foreach($edus as $edu)
-                <div class="col">
-                        <div class="card teacher-card">
-                            <!--<div class="card-body d-flex">-->
-                                <!--<div class="profile-av pe-xl-4 pe-md-2 pe-sm-4 pe-4 text-center w220">
-                                    <img src="http://localhost:8000/employee/873068846.JPG" alt="" class="avatar xl rounded-circle img-thumbnail shadow-sm">
-                                    <div class="about-info d-flex align-items-center mt-3 justify-content-center">
-                                        <div class="followers me-2">
-                                            <i class="icofont-tasks color-careys-pink fs-4"></i>
-                                            <span class="">04</span>
-                                        </div>
-                                        <div class="star me-2">
-                                            <i class="icofont-star text-warning fs-4"></i>
-                                            <span class="">4.5</span>
-                                        </div>
-                                        <div class="own-video">
-                                            <i class="icofont-data color-light-orange fs-4"></i>
-                                            <span class="">04</span>
-                                        </div>
-                                    </div>
-                                </div>-->
-                                <div class="teacher-info border-start ps-xl-4 ps-md-3 ps-sm-4 ps-4 w-100">
-                                    <h6 class="mb-0 mt-2  fw-bold d-block" style="font-size:20px">{{$edu->university_name}}</h6>
-                                    <span class="light-info-bg py-1 px-2 rounded-1 d-inline-block fw-bold small-11 mb-0 mt-1">{{$edu->degree}}</span>
-                                    <div class="video-setting-icon mt-3 pt-3 border-top">
-                                        <p><b>Field of Study :</b> {{$edu->field_of_study}}</p>
-                                        <p><b>From :</b> {{$edu->start_date}} &nbsp&nbsp  <b>To :</b> {{$edu->end_date}}</p>
-                                        <p><b>Grade :</b> {{$edu->grade}}</p>
-                                        <p>{{$edu->description}}</p>
-                                    </div>
-                                    <a href="{{url('/user/editEducation')}}/{{$edu->id}}" class="btn btn-dark btn-sm mt-1"><i class="icofont-edit-alt me-2 fs-6"></i>Edit Education</a>
-                                    <a href="{{url('/user/deleteEducation')}}/{{$edu->id}}" class="btn btn-dark btn-sm mt-1"><i class="icofont-delete-alt me-2 fs-6"></i>Delete Education</a>
-                                </div>
-                            </div>
                         <!--</div>-->
-                        </div>
-                        @endforeach
             </div>
-        </div>
-        
-       <!-- Modal Members-->
-       
-
-        <!-- Create Employee-->
-        <div class="modal fade" id="createemp" tabindex="-1"  aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered modal-lg modal-dialog-scrollable">
-                <div class="modal-content">
+            
+            
                 
-                    <div class="modal-header">
-                    
-                        <h5 class="modal-title  fw-bold" id="createprojectlLabel"> Add Education</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    
-                    <div class="modal-body">
-                    <form method="post" enctype="multipart/form-data" action="{{ url('user/addEducation')}}/{{$user->id}}">
+            <form method="post" enctype="multipart/form-data" action="{{ url('user/editFdp')}}/{{$FdpDetails->id}}">
                     @csrf
                     @if(Session::has('loginError'))
                     <div class="alert alert-danger alert-dismissible fade show" role="alert">
@@ -237,38 +183,31 @@
                         </button>
                     </div>
                 @endif
+                <div class="mb-3">     
+                            <label for="exampleFormControlInput877" class="form-label">FDP Title</label>
+                            <input name="fdp_title" type="text" class="form-control" id="exampleFormControlInput877" value="{{$FdpDetails->fdp_title}}" placeholder="Enter Organization Name">
+                        </div>
                   <div class="mb-3">     
-                            <label for="exampleFormControlInput877" class="form-label">University Name</label>
-                            <input name="university_name" type="text" class="form-control" id="exampleFormControlInput877" placeholder="Enter University Name">
+                            <label for="exampleFormControlInput877" class="form-label">Name of Organization/Association</label>
+                            <input name="organization_name" type="text" class="form-control" id="exampleFormControlInput877" value="{{$FdpDetails->organization_name}}" placeholder="Enter Organization Name">
                         </div>
-                        <div class="mb-3">
-                            <label for="exampleFormControlInput977" class="form-label">Degree</label>
-                            <input name="degree" type="text" class="form-control" id="exampleFormControlInput977" placeholder="Enter Degree">
-                        </div>
-                        <div class="mb-3">
-                            <label for="exampleFormControlInput677" class="form-label">Field of Study</label>
-                            <input name="field_of_study" type="text" class="form-control" id="exampleFormControlInput677" placeholder="Enter Field of Study">
-                        </div>
+                        
                         <div class="deadline-form">
                             
                                 <div class="row g-3 mb-3">
                                     <div class="col-sm-6">
                                         <label for="exampleFormControlInput3778" class="form-label">Start Date</label>
-                                        <input name="start_date" type="date" class="form-control" id="exampleFormControlInput3778">
+                                        <input name="start_date" type="date" class="form-control" value="{{$FdpDetails->start_date}}" id="exampleFormControlInput3778">
                                     </div>
                                     <div class="col-sm-6">
                                         <label for="exampleFormControlInput2778" class="form-label">End Date</label>
-                                        <input name="end_date" type="date" class="form-control" id="exampleFormControlInput2778">
+                                        <input name="end_date" type="date" class="form-control" value="{{$FdpDetails->end_date}}" id="exampleFormControlInput2778">
                                     </div>
                                 </div>                            
                         </div>
-                        <div class="mb-3">
-                            <label for="exampleFormControlInput577" class="form-label">Grade</label>
-                            <input name="grade" type="text" class="form-control" id="exampleFormControlInput577" placeholder="Enter Grade">
-                        </div>
                         <div class="mb-3">          
                             <label for="exampleFormControlTextarea78" class="form-label">Description (optional)</label>
-                            <textarea name="description" class="form-control" id="exampleFormControlTextarea78" rows="3" placeholder="Add any extra details"></textarea>
+                            <textarea name="description" class="form-control" id="exampleFormControlTextarea78" rows="3" placeholder="Add any extra details">{{$FdpDetails->description}}</textarea>
                         </div> 
                         
                     </div>
@@ -277,8 +216,7 @@
                         <button type="submit" class="btn btn-primary" onclick="submit()">Save</button>
                     </div> 
                     </form>
-
-                </div>
+                
                   
             </div>
         </div>

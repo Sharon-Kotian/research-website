@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=Edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     
-    <title>:: My-Profile:: Education</title>
+    <title>:: My-Profile:: Dashboard</title>
     <link rel="icon" href="favicon.ico" type="image/x-icon"> <!-- Favicon-->
     <!-- project css file  -->
     <link rel="stylesheet" href="http://localhost:8000/assets/css/my-task.style.min.css">
@@ -15,11 +15,12 @@
 <body>
 
 <div id="mytask-layout" class="theme-indigo">
+<?php $user = Auth::guard('admin')->user(); ?>
 
     <!-- sidebar -->
     <div class="sidebar px-4 py-4 py-md-5 me-0">
         <div class="d-flex flex-column h-100">
-            <a href="index.html" class="mb-0 brand-icon">
+            <a href="{{url('user/dashboard')}}" class="mb-0 brand-icon">
                 <span class="logo-icon">
                     <svg  width="35" height="35" fill="currentColor" class="bi bi-clipboard-check" viewBox="0 0 16 16">
                         <path fill-rule="evenodd" d="M10.854 7.146a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L7.5 9.793l2.646-2.647a.5.5 0 0 1 .708 0z"/>
@@ -33,7 +34,7 @@
             <ul class="menu-list flex-grow-1 mt-3">
                 
                 <li class="collapsed">
-                    <a class="m-link" href="{{url('/user/profile')}}"><i
+                    <a class="m-link" href="{{url('/user/profile')}}/{{$user->id}}"><i
                             class="icofont-user-male"></i> <span>My Profile</span> </a></li>
                             <li><a class="m-link" href="{{url('/user/education')}}"><i class="icofont-book-alt"></i> <span>Education</span></a></li>
 
@@ -77,7 +78,7 @@
     
                     <!-- header rightbar icon -->
                     <div class="h-right d-flex align-items-center mr-5 mr-lg-0 order-1">   
-                        <?php $user = Auth::guard('admin')->user(); ?>
+                        
                                                       
                         <div class="dropdown user-profile ml-2 ml-sm-3 d-flex align-items-center zindex-popover">
                             <div class="u-info me-2">
@@ -129,8 +130,8 @@
                     <div class="col-md-12">
                         <div class="card border-0 mb-4 no-bg">
                             <div class="card-header py-3 px-0 d-sm-flex align-items-center  justify-content-between border-bottom">
-                                <h3 class=" fw-bold flex-fill mb-0 mt-sm-0">Education</h3>
-                                <button type="button" class="btn btn-dark me-1 mt-1 w-sm-100" data-bs-toggle="modal" data-bs-target="#createemp"><i class="icofont-plus-circle me-2 fs-6"></i>Add Education</button>
+                                <h3 class=" fw-bold flex-fill mb-0 mt-sm-0">Dashboard</h3>
+                                <!-- <button type="button" class="btn btn-dark me-1 mt-1 w-sm-100" data-bs-toggle="modal" data-bs-target="#createemp"><i class="icofont-plus-circle me-2 fs-6"></i>Add Education</button> -->
                                 
                             </div>
                         </div>
@@ -139,12 +140,15 @@
                 <div class="row g-3 row-cols-1 row-cols-sm-1 row-cols-md-1 row-cols-lg-2 row-cols-xl-2 row-cols-xxl-2 row-deck py-1 pb-4">
                 
                 <?php
-                    $edus=\App\Models\Education::where("user_id",$user->id)->count();
+                    $edus=\App\Models\Patent::where("user_id",$user->id)->count();
+                    $edus1=\App\Models\Paper::where("user_id",$user->id)->count();
+                    $edus2=\App\Models\Book::where("user_id",$user->id)->count();
+                    $edus3=\App\Models\Book::where("user_id",$user->id)->count();
                 ?>
                 
                 
                 <div class="col">
-                        <div class="card teacher-card" style="height:200px;background-image: linear-gradient(to bottom right, orange, yellow);" >
+                        <div class="card teacher-card" style="height:160px;background-image: linear-gradient(to bottom right, orange, yellow);" >
                             <!--<div class="card-body d-flex">-->
                                 <!--<div class="profile-av pe-xl-4 pe-md-2 pe-sm-4 pe-4 text-center w220">
                                     <img src="http://localhost:8000/employee/873068846.JPG" alt="" class="avatar xl rounded-circle img-thumbnail shadow-sm">
@@ -165,84 +169,49 @@
                                 </div>-->
                                 <div class="teacher-info border-start ps-xl-4 ps-md-3 ps-sm-4 ps-4 w-100 h-100 ">
                                 <i class="icofont-certificate-alt-1 icofont-10x"></i>
-                                    <div style="margin-left:300px; margin-top:-100px;"><h6 class="mb-0 mt-2  fw-bold d-block" style="font-size:30px;">Patents</h6></div>
-                                    
-                                    {{$edus}}
+                                <div style="margin-left:300px; margin-top:-100px;"><h6 class="mb-0 mt-2  fw-bold d-block" style="font-size:30px;">Papers</h6><h5 class="mb-0 mt-2  fw-bold d-block" style="font-size:30px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{$edus}}</h5></div>
                                     
                                 </div>
                             </div>
                         <!--</div>-->
                         </div>
 
-                        <div class="col" style="height:200px;">
-                        <div class="card teacher-card" style="background-image: linear-gradient(to bottom right, LimeGreen,Lime )">
+                        <div class="col">
+                        <div class="card teacher-card" style="height:160px;background-image: linear-gradient(to bottom right, DeepPink, DarkSalmon);">
                             
-                                <div class="teacher-info border-start ps-xl-4 ps-md-3 ps-sm-4 ps-4 w-100">
-                                    <h6 class="mb-0 mt-2  fw-bold d-block" style="font-size:20px;margin-left:20px;">Papers</h6>
+                        <div class="teacher-info border-start ps-xl-4 ps-md-3 ps-sm-4 ps-4 w-100 h-100 ">
+                                <i class="icofont-certificate-alt-1 icofont-10x"></i>
+                                    <div style="margin-left:300px; margin-top:-100px;"><h6 class="mb-0 mt-2  fw-bold d-block" style="font-size:30px;">Papers</h6><h5 class="mb-0 mt-2  fw-bold d-block" style="font-size:30px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{$edus1}}</h5></div>
                                     
+                                    
+                                    
+                                </div>
+                            </div>
+                        <!--</div>-->
+                        </div><br><br>
+
+                        <div class="col">
+                        <div class="card teacher-card" style="height:160px;background-image: linear-gradient(to bottom right, CadetBlue, Aqua);">
+                            
+                        <div class="teacher-info border-start ps-xl-4 ps-md-3 ps-sm-4 ps-4 w-100 h-100 ">
+                                <i class="icofont-certificate-alt-1 icofont-10x"></i>
+                                <div style="margin-left:300px; margin-top:-100px;"><h6 class="mb-0 mt-2  fw-bold d-block" style="font-size:30px;">Books</h6><h5 class="mb-0 mt-2  fw-bold d-block" style="font-size:30px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{$edus2}}</h5></div>
                                     
                                 </div>
                             </div>
                         <!--</div>-->
                         </div>
-
-                        <div class="col" style="height:200px;">
-                        <div class="card teacher-card">
-                            <!--<div class="card-body d-flex">-->
-                                <!--<div class="profile-av pe-xl-4 pe-md-2 pe-sm-4 pe-4 text-center w220">
-                                    <img src="http://localhost:8000/employee/873068846.JPG" alt="" class="avatar xl rounded-circle img-thumbnail shadow-sm">
-                                    <div class="about-info d-flex align-items-center mt-3 justify-content-center">
-                                        <div class="followers me-2">
-                                            <i class="icofont-tasks color-careys-pink fs-4"></i>
-                                            <span class="">04</span>
-                                        </div>
-                                        <div class="star me-2">
-                                            <i class="icofont-star text-warning fs-4"></i>
-                                            <span class="">4.5</span>
-                                        </div>
-                                        <div class="own-video">
-                                            <i class="icofont-data color-light-orange fs-4"></i>
-                                            <span class="">04</span>
-                                        </div>
-                                    </div>
-                                </div>-->
-                                <div class="teacher-info border-start ps-xl-4 ps-md-3 ps-sm-4 ps-4 w-100">
-                                    <h6 class="mb-0 mt-2  fw-bold d-block" style="font-size:20px;margin-left:20px;">Books</h6>
-                                    
+                        <div class="col">
+                        <div class="card teacher-card" style="height:160px;background-image: linear-gradient(to bottom right, DarkSlateGray, DarkGray);">
+                            
+                        <div class="teacher-info border-start ps-xl-4 ps-md-3 ps-sm-4 ps-4 w-100 h-100 ">
+                                <i class="icofont-certificate-alt-1 icofont-10x"></i>
+                                <div style="margin-left:250px; margin-top:-100px;"><h6 class="mb-0 mt-2  fw-bold d-block" style="font-size:30px;">Book Chapters</h6><h5 class="mb-0 mt-2  fw-bold d-block" style="font-size:30px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{$edus3}}</h5></div>
                                     
                                 </div>
                             </div>
                         <!--</div>-->
                         </div>
-
-                        <div class="col" style="height:200px;">
-                        <div class="card teacher-card">
-                            <!--<div class="card-body d-flex">-->
-                                <!--<div class="profile-av pe-xl-4 pe-md-2 pe-sm-4 pe-4 text-center w220">
-                                    <img src="http://localhost:8000/employee/873068846.JPG" alt="" class="avatar xl rounded-circle img-thumbnail shadow-sm">
-                                    <div class="about-info d-flex align-items-center mt-3 justify-content-center">
-                                        <div class="followers me-2">
-                                            <i class="icofont-tasks color-careys-pink fs-4"></i>
-                                            <span class="">04</span>
-                                        </div>
-                                        <div class="star me-2">
-                                            <i class="icofont-star text-warning fs-4"></i>
-                                            <span class="">4.5</span>
-                                        </div>
-                                        <div class="own-video">
-                                            <i class="icofont-data color-light-orange fs-4"></i>
-                                            <span class="">04</span>
-                                        </div>
-                                    </div>
-                                </div>-->
-                                <div class="teacher-info border-start ps-xl-4 ps-md-3 ps-sm-4 ps-4 w-100">
-                                    <h6 class="mb-0 mt-2  fw-bold d-block" style="font-size:20px;margin-left:20px;">Book Chapters</h6>
-                                    
-                                    
-                                </div>
-                            </div>
-                        <!--</div>-->
-</div>
             </div>
         </div>
         

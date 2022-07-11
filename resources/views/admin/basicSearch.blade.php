@@ -28,20 +28,63 @@
                     </svg>
                 </span>
                 <span class="logo-text">My-Dashboard</span>
-            </a>
-            <!-- Menu: main ul -->
+            </a><br>
+            <?php $domains= \App\Models\User::all()->unique('domain_of_expertise'); ?>
             <ul class="menu-list flex-grow-1 mt-3">
+            <span style="font-size:17px;color:white;">Name</span>
+            <input id="name" type="text" name="name" style="font-size:17px;" class="form-control" placeholder="Name Wise Search"><br><br>
+            <span style="font-size:17px;color:white;">Year</span>
+            <input id="year" type="number" name="year" min=1970 max=2100 style="font-size:17px;" class="form-control" placeholder="Year Wise Search"><br><br>
+            <span style="font-size:17px;color:white;">Domain</span>
+            @foreach($domains as $domain)
+                <label class="d-block" for="{{$domain->domain_of_expertise}}">
+                <input id="{{$domain->domain_of_expertise}}" type="checkbox" name="domain[]" value="{{$domain->domain_of_expertise}}"><span style="font-size:17px;color:white;">&nbsp;&nbsp;{{$domain->domain_of_expertise}}</span>
+                </label>
+            @endforeach
+            </ul>
+            <!-- <div style="color:white">
+                                
+                        
+                        
+                                        
+                                  <div><span style="font-size:20px;color:white;">Name</span></div>
+                                  
+                                  <label class="d-block" for="name">
+                                    <input id="name" type="text" name="name" style="font-size:20px;" class="form-control" placeholder="Name Wise Search">
+                                  </label>
+                                 
+                                  
+                                </div><br><br>
+                                <div><span style="font-size:20px;color:white;">Year</span></div>
+                                  
+                                  <label class="d-block" for="year">
+                                    <input id="year" type="number" name="year" min=1970 max=2100 style="font-size:20px;" class="form-control" placeholder="Year Wise Search">
+                                  </label>
+                                 
+                                  
+                                </div><br><br>
+                                <div><span style="font-size:20px;color:white;">Domain</span></div>
+                                  @foreach($domains as $domain)
+                                  <label class="d-block" for="{{$domain->domain_of_expertise}}">
+                                    <input id="{{$domain->domain_of_expertise}}" type="checkbox" name="domain[]" value="{{$domain->domain_of_expertise}}"><span style="font-size:20px;color:white;">&nbsp;&nbsp;{{$domain->domain_of_expertise}}</span>
+                                  </label>
+                                  @endforeach
+                                  
+                                </div>
+</div> -->
+            <!-- Menu: main ul -->
+            <!-- <ul class="menu-list flex-grow-1 mt-3">
                 
                 <li class="collapsed">
-                    <a class="m-link" href="{{url('/user/profile')}}"><i
-                            class="icofont-user-male"></i> <span><input type="text" placeholder="Name Wise Search">&nbsp;&nbsp;<button type="button" class="btn btn-light me-1 mt-1 w-sm-100" data-bs-toggle="modal" data-bs-target="#createemp">Search</button></span> </a></li>
+                    <a class="m-link" href="{{url('/user/profile')}}">
+                        <i class="icofont-user-male"></i> <span><input type="checkbox">AI/ML</span></a></li>
                             <li><a class="m-link" href="{{url('/user/education')}}"><i class="icofont-book-alt"></i> <span>Faculty Wise Search</span></a></li>                       
                    
-                    <!-- Menu: Sub menu ul -->
+                     Menu: Sub menu ul 
                     
                     <li><a class="m-link" href="{{url('/user/project')}}"><i class="icofont-atom"></i> <span>Domain Wise Search</span></a></li>
                         <li><a class="m-link" href="{{url('/user/consultancy')}}"><i class="icofont-users-alt-2"></i> <span>Year Wise Search</span></a></li>                 
-            </ul>
+            </ul> -->
 
 
             
@@ -113,7 +156,7 @@
 
                                 
                                 <h3 class=" fw-bold flex-fill mb-0 mt-sm-0">Search Results</h3>
-                                <button type="button" class="btn btn-dark me-1 mt-1 w-sm-100" data-bs-toggle="modal" data-bs-target="#createemp"><i class="icofont-plus-circle me-2 fs-6"></i>Add Education</button>
+                                <!-- <button type="button" class="btn btn-dark me-1 mt-1 w-sm-100" data-bs-toggle="modal" data-bs-target="#createemp"><i class="icofont-plus-circle me-2 fs-6"></i>Add Education</button> -->
                                 
                             </div>
                         </div>

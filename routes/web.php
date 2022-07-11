@@ -56,7 +56,7 @@ Route::group(['prefix' => '/user'], function()
 {
     Route::get('dashboard', [UserController::class, 'dashboard']);
     Route::get('profile/{id}',[UserController::class,'getProfileEdit']);
-    Route::post('profile/{id}',[UserController::class,'postProfileEdit']);
+    Route::post('editProfile/{id}',[UserController::class,'postProfileEdit']);
     
 
     Route::get('education', [EducationController::class, 'education_view']);
@@ -76,6 +76,12 @@ Route::group(['prefix' => '/user'], function()
     Route::get('editMembership/{id}',[MembershipController::class,'getMembershipEdit']);
     Route::post('editMembership/{id}',[MembershipController::class,'postMembershipEdit']);
     Route::get('deleteMembership/{id}',[MembershipController::class,'deleteMembership']);
+
+    Route::get('fdp', [FDPController::class, 'fdp_view']);
+    Route::post('addFdp/{id}', [FDPController::class, 'addFdp']);
+    Route::get('editFdp/{id}',[FDPController::class,'getFdpEdit']);
+    Route::post('editFdp/{id}',[FDPController::class,'postFdpEdit']);
+    Route::get('deleteFdp/{id}',[FDPController::class,'deleteFdp']);
 
     Route::get('paper', [PaperController::class, 'paper_view']);
     Route::post('addPaper/{id}', [PaperController::class, 'addPaper']);

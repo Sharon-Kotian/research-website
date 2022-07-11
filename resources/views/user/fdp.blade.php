@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=Edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     
-    <title>:: My-Profile:: Education</title>
+    <title>:: My-Profile:: FDP</title>
     <link rel="icon" href="favicon.ico" type="image/x-icon"> <!-- Favicon-->
     <!-- project css file  -->
     <link rel="stylesheet" href="http://localhost:8000/assets/css/my-task.style.min.css">
@@ -130,8 +130,8 @@
                     <div class="col-md-12">
                         <div class="card border-0 mb-4 no-bg">
                             <div class="card-header py-3 px-0 d-sm-flex align-items-center  justify-content-between border-bottom">
-                                <h3 class=" fw-bold flex-fill mb-0 mt-sm-0">Education</h3>
-                                <button type="button" class="btn btn-dark me-1 mt-1 w-sm-100" data-bs-toggle="modal" data-bs-target="#createemp"><i class="icofont-plus-circle me-2 fs-6"></i>Add Education</button>
+                                <h3 class=" fw-bold flex-fill mb-0 mt-sm-0">FDPs</h3>
+                                <button type="button" class="btn btn-dark me-1 mt-1 w-sm-100" data-bs-toggle="modal" data-bs-target="#createemp"><i class="icofont-plus-circle me-2 fs-6"></i>Add FDP</button>
                                 
                             </div>
                         </div>
@@ -140,10 +140,10 @@
                 <div class="row g-3 row-cols-1 row-cols-sm-1 row-cols-md-1 row-cols-lg-2 row-cols-xl-2 row-cols-xxl-2 row-deck py-1 pb-4">
                 
                 <?php
-                    $edus=\App\Models\Education::where("user_id",$user->id)->get();
+                    $mems=\App\Models\FDP::where("user_id",$user->id)->get();
                 ?>
                 
-                @foreach($edus as $edu)
+                @foreach($mems as $mem)
                 <div class="col">
                         <div class="card teacher-card">
                             <!--<div class="card-body d-flex">-->
@@ -165,16 +165,15 @@
                                     </div>
                                 </div>-->
                                 <div class="teacher-info border-start ps-xl-4 ps-md-3 ps-sm-4 ps-4 w-100">
-                                    <h6 class="mb-0 mt-2  fw-bold d-block" style="font-size:20px">{{$edu->university_name}}</h6>
-                                    <span class="light-info-bg py-1 px-2 rounded-1 d-inline-block fw-bold small-11 mb-0 mt-1">{{$edu->degree}}</span>
+                                    <h6 class="mb-0 mt-2  fw-bold d-block" style="font-size:20px">{{$mem->fdp_title}}</h6>
+                                    
+                                    <span class="light-info-bg py-1 px-2 rounded-1 d-inline-block fw-bold small-11 mb-0 mt-1">{{$mem->organization_name}}</span>
                                     <div class="video-setting-icon mt-3 pt-3 border-top">
-                                        <p><b>Field of Study :</b> {{$edu->field_of_study}}</p>
-                                        <p><b>From :</b> {{$edu->start_date}} &nbsp&nbsp  <b>To :</b> {{$edu->end_date}}</p>
-                                        <p><b>Grade :</b> {{$edu->grade}}</p>
-                                        <p>{{$edu->description}}</p>
+                                    <p><b>From :</b> {{$mem->start_date}} &nbsp&nbsp  <b>To :</b> {{$mem->end_date}}</p>
+                                        <p>{{$mem->description}}</p>
                                     </div>
-                                    <a href="{{url('/user/editEducation')}}/{{$edu->id}}" class="btn btn-dark btn-sm mt-1"><i class="icofont-edit-alt me-2 fs-6"></i>Edit Education</a>
-                                    <a href="{{url('/user/deleteEducation')}}/{{$edu->id}}" class="btn btn-dark btn-sm mt-1"><i class="icofont-delete-alt me-2 fs-6"></i>Delete Education</a>
+                                    <a href="{{url('/user/editFdp')}}/{{$mem->id}}" class="btn btn-dark btn-sm mt-1"><i class="icofont-edit-alt me-2 fs-6"></i>Edit FDP</a>
+                                    <a href="{{url('/user/deleteFdp')}}/{{$mem->id}}" class="btn btn-dark btn-sm mt-1"><i class="icofont-delete-alt me-2 fs-6"></i>Delete FDP</a>
                                 </div>
                             </div>
                         <!--</div>-->
@@ -193,12 +192,12 @@
                 
                     <div class="modal-header">
                     
-                        <h5 class="modal-title  fw-bold" id="createprojectlLabel"> Add Education</h5>
+                        <h5 class="modal-title  fw-bold" id="createprojectlLabel"> Add Patent</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     
                     <div class="modal-body">
-                    <form method="post" enctype="multipart/form-data" action="{{ url('user/addEducation')}}/{{$user->id}}">
+                    <form method="post" enctype="multipart/form-data" action="{{ url('user/addFdp')}}/{{$user->id}}">
                     @csrf
                     @if(Session::has('loginError'))
                     <div class="alert alert-danger alert-dismissible fade show" role="alert">
@@ -237,18 +236,15 @@
                         </button>
                     </div>
                 @endif
-                  <div class="mb-3">     
-                            <label for="exampleFormControlInput877" class="form-label">University Name</label>
-                            <input name="university_name" type="text" class="form-control" id="exampleFormControlInput877" placeholder="Enter University Name">
+                <div class="mb-3">
+                            <label for="exampleFormControlInput677" class="form-label">FDP Title</label>
+                            <input name="fdp_title" type="text" class="form-control" id="exampleFormControlInput677" placeholder="Enter FDP Title">
                         </div>
-                        <div class="mb-3">
-                            <label for="exampleFormControlInput977" class="form-label">Degree</label>
-                            <input name="degree" type="text" class="form-control" id="exampleFormControlInput977" placeholder="Enter Degree">
+                <div class="mb-3">     
+                            <label for="exampleFormControlInput877" class="form-label">Name of Organization/Association</label>
+                            <input name="organization_name" type="text" class="form-control" id="exampleFormControlInput877" placeholder="Enter Organization Name">
                         </div>
-                        <div class="mb-3">
-                            <label for="exampleFormControlInput677" class="form-label">Field of Study</label>
-                            <input name="field_of_study" type="text" class="form-control" id="exampleFormControlInput677" placeholder="Enter Field of Study">
-                        </div>
+                        
                         <div class="deadline-form">
                             
                                 <div class="row g-3 mb-3">
@@ -261,10 +257,6 @@
                                         <input name="end_date" type="date" class="form-control" id="exampleFormControlInput2778">
                                     </div>
                                 </div>                            
-                        </div>
-                        <div class="mb-3">
-                            <label for="exampleFormControlInput577" class="form-label">Grade</label>
-                            <input name="grade" type="text" class="form-control" id="exampleFormControlInput577" placeholder="Enter Grade">
                         </div>
                         <div class="mb-3">          
                             <label for="exampleFormControlTextarea78" class="form-label">Description (optional)</label>

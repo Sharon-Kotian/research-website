@@ -235,7 +235,7 @@ class UserController extends Controller
         
         
         $profile->save();
-        return redirect('user/profile')->with(['success' => 'Profile Updated successfully.']);
+        return redirect('user/profile/'.$id)->with(['success' => 'Profile Updated successfully.']);
     }
 
 }

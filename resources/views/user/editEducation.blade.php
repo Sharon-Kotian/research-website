@@ -15,6 +15,7 @@
 <body>
 
 <div id="mytask-layout" class="theme-indigo">
+<?php $user = Auth::guard('admin')->user(); ?>
 
     <!-- sidebar -->
     <div class="sidebar px-4 py-4 py-md-5 me-0">
@@ -33,11 +34,12 @@
             <ul class="menu-list flex-grow-1 mt-3">
                 
                 <li class="collapsed">
-                    <a class="m-link" data-bs-toggle="collapse" data-bs-target="#client-Components" href="#"><i
-                            class="icofont-user-male"></i> <span>My Profile</span> <span class="arrow icofont-dotted-down ms-auto text-end fs-5"></span></a>
-                    <!-- Menu: Sub menu ul -->
-                    <ul class="sub-menu collapse" id="client-Components">
-                        <li><a class="ms-link" href="{{url('/user/education')}}"> <span>Education</span></a></li>
+                    <a class="m-link" href="{{url('/user/profile')}}/{{$user->id}}"><i
+                            class="icofont-user-male"></i> <span>My Profile</span> </a></li>
+                            <li><a class="m-link" href="{{url('/user/education')}}"><i class="icofont-book-alt"></i> <span>Education</span></a></li>
+
+                            
+                        
                         
 
                         <li class="collapsed">
@@ -51,11 +53,13 @@
                                 </ul>
                         </li>
 
-                        <li><a class="ms-link" href="{{url('/user/project')}}"> <span>Projects</span></a></li>
-                        <li><a class="ms-link" href="{{url('/user/consultancy')}}"> <span>Consultancy</span></a></li>
-                        <li><a class="ms-link" href="{{url('/user/membership')}}"> <span>Membership</span></a></li>
-                    </ul>
-                </li>
+                        
+                   
+                    <!-- Menu: Sub menu ul -->
+                    
+                    <li><a class="m-link" href="{{url('/user/project')}}"><i class="icofont-atom"></i> <span>Projects</span></a></li>
+                        <li><a class="m-link" href="{{url('/user/consultancy')}}"><i class="icofont-users-alt-2"></i> <span>Consultancy</span></a></li>
+                        <li><a class="m-link" href="{{url('/user/membership')}}"><i class="icofont-company"></i> <span>Membership</span></a></li>
                 
             </ul>
 
@@ -63,6 +67,7 @@
             
         </div>
     </div>
+
 
     <!-- main body area -->
     <div class="main px-lg-4 px-md-4">
