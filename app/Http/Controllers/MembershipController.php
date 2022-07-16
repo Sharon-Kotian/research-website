@@ -46,6 +46,7 @@ class MembershipController extends Controller
 
         $membership->organization_name=$request->organization_name;
         $membership->membership_id=$request->membership_id;
+        $membership->type=$request->type;
         $membership->start_date=$request->start_date;
         $membership->end_date=$request->end_date;
         $membership->description=$request->description;
@@ -72,6 +73,7 @@ class MembershipController extends Controller
 
         $membership->organization_name=$request->organization_name;
         $membership->membership_id=$request->membership_id;
+        $membership->type=$request->type;
         $membership->start_date=$request->start_date;
         $membership->end_date=$request->end_date;
         $membership->description=$request->description;

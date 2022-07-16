@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\MDP;
+use App\Models\CaseStudy;
 use Illuminate\Http\Request;
 
-class MDPController extends Controller
+class CaseStudyController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -38,66 +38,61 @@ class MDPController extends Controller
         //
     }
 
-
-    public function mdp_view(Request $request)
+    public function CaseStudy_view(Request $request)
     {
-        return view('user.mdp');
+        return view('user.caseStudy');
     }
 
-    public function addMdp(Request $request)
+    public function addCaseStudy(Request $request)
     {
-        $membership=new MDP();
+        $membership=new CaseStudy();
 
-        $membership->mdp_title=$request->mdp_title;
-        $membership->organization_name=$request->organization_name;
-        $membership->start_date=$request->start_date;
-        $membership->end_date=$request->end_date;
+        $membership->title=$request->title;
+        $membership->case_date=$request->case_date;
         $membership->description=$request->description;
         $membership->user_id=$request->id;
 
         $membership->save();
 
-        return redirect('user/mdp')->with('success', "Success:MDP Details Added");
+        return redirect('user/caseStudy')->with('success', "Success:CaseStudy Details Added");
     }
 
-    public function getMdpEdit(Request $request)
+    public function getCaseStudyEdit(Request $request)
     {
        $id = $request->id;
 
-       $MdpDetails=MDP::find($id);
-        return view('user.editMdp')->with('MdpDetails',$MdpDetails);
+       $CaseStudyDetails=CaseStudy::find($id);
+        return view('user.editCaseStudy')->with('CaseStudyDetails',$CaseStudyDetails);
     }
 
 
-    public function postMdpEdit(request $request)
+    public function postCaseStudyEdit(request $request)
     {
        $id = $request->id;
-        $membership=MDP::find($id);
+        $membership=CaseStudy::find($id);
 
-        $membership->mdp_title=$request->mdp_title;
-        $membership->organization_name=$request->organization_name;
-        $membership->start_date=$request->start_date;
-        $membership->end_date=$request->end_date;
+        $membership->title=$request->title;
+        $membership->case_date=$request->case_date;
         $membership->description=$request->description;
         
         $membership->save();
-        return redirect('user/mdp')->with(['success' => 'MDP Updated successfully.']);
+        return redirect('user/caseStudy')->with(['success' => 'CaseStudy Updated successfully.']);
     }
 
-    public function deleteMdp(Request $request)
+    public function deleteCaseStudy(Request $request)
     {
         $id = $request->id;
-       $res=MDP::find($id)->delete();
-       return redirect('user/mdp')->with(['success' => 'MDP deleted successfully.']);
+       $res=CaseStudy::find($id)->delete();
+       return redirect('user/caseStudy')->with(['success' => 'CaseStudy deleted successfully.']);
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\MDP  $mDP
+     * @param  \App\Models\CaseStudy  $caseStudy
      * @return \Illuminate\Http\Response
      */
-    public function show(MDP $mDP)
+    public function show(CaseStudy $caseStudy)
     {
         //
     }
@@ -105,10 +100,10 @@ class MDPController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\MDP  $mDP
+     * @param  \App\Models\CaseStudy  $caseStudy
      * @return \Illuminate\Http\Response
      */
-    public function edit(MDP $mDP)
+    public function edit(CaseStudy $caseStudy)
     {
         //
     }
@@ -117,10 +112,10 @@ class MDPController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\MDP  $mDP
+     * @param  \App\Models\CaseStudy  $caseStudy
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, MDP $mDP)
+    public function update(Request $request, CaseStudy $caseStudy)
     {
         //
     }
@@ -128,10 +123,10 @@ class MDPController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\MDP  $mDP
+     * @param  \App\Models\CaseStudy  $caseStudy
      * @return \Illuminate\Http\Response
      */
-    public function destroy(MDP $mDP)
+    public function destroy(CaseStudy $caseStudy)
     {
         //
     }

@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=Edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     
-    <title>:: My-Profile:: Book/Book Chapter</title>
+    <title>:: My-Profile:: Conference Proceeding</title>
     <link rel="icon" href="favicon.ico" type="image/x-icon"> <!-- Favicon-->
     <!-- project css file  -->
     <link rel="stylesheet" href="http://localhost:8000/assets/css/my-task.style.min.css">
@@ -134,7 +134,7 @@
                     <div class="col-md-12">
                         <div class="card border-0 mb-4 no-bg">
                             <div class="card-header py-3 px-0 d-sm-flex align-items-center  justify-content-between border-bottom">
-                                <h3 class=" fw-bold flex-fill mb-0 mt-sm-0">Books/Book Chapters</h3>
+                                <h3 class=" fw-bold flex-fill mb-0 mt-sm-0">Conference Proceeding</h3>
                                 
                             </div>
                         </div>
@@ -145,7 +145,7 @@
             
             
                 
-            <form method="post" enctype="multipart/form-data" action="{{ url('user/editEducation')}}/{{$EducationDetails->id}}">
+            <form method="post" enctype="multipart/form-data" action="{{ url('user/editConferenceProceeding')}}/{{$ConferenceProceedingDetails->id}}">
                     @csrf
                     @if(Session::has('loginError'))
                     <div class="alert alert-danger alert-dismissible fade show" role="alert">
@@ -184,41 +184,35 @@
                         </button>
                     </div>
                 @endif
-                  <div class="mb-3">     
-                            <label for="exampleFormControlInput877" class="form-label">University Name</label>
-                            <input name="university_name" type="text" class="form-control" id="exampleFormControlInput877" value="{{$EducationDetails->university_name}}" placeholder="Enter University Name">
+                  
+                         
+                        <div>
+                    <label for="exampleFormControlInput877" class="form-label">Conference Proceeding Information</label>
+                    <div class="mb-3">     
+                            <label for="exampleFormControlInput877" class="form-label">Name</label>
+                            <input name="conference_name" type="text" class="form-control" id="exampleFormControlInput877" value="{{$ConferenceProceedingDetails->conference_name}}" placeholder="Enter Conference Name">
                         </div>
-                        <div class="mb-3">
-                            <label for="exampleFormControlInput977" class="form-label">Degree</label>
-                            <input name="degree" type="text" class="form-control" id="exampleFormControlInput977" value="{{$EducationDetails->degree}}" placeholder="Enter Degree">
+                        <div class="mb-3">     
+                            <label for="exampleFormControlInput877" class="form-label">Date</label>
+                            <input name="conference_date" type="date" class="form-control" id="exampleFormControlInput877" value="{{$ConferenceProceedingDetails->conference_date}}" placeholder="Enter Conference Date">
                         </div>
-                        <div class="mb-3">
-                            <label for="exampleFormControlInput677" class="form-label">Field of Study</label>
-                            <input name="field_of_study" type="text" class="form-control" id="exampleFormControlInput677" value="{{$EducationDetails->field_of_study}}" placeholder="Enter Field of Study">
+                        <div class="mb-3">     
+                            <label for="exampleFormControlInput877" class="form-label">Venue</label>
+                            <input name="conference_venue" type="text" class="form-control" id="exampleFormControlInput877" value="{{$ConferenceProceedingDetails->conference_venue}}" placeholder="Enter Conference Venue">
                         </div>
-                        <div class="deadline-form">
-                            
-                                <div class="row g-3 mb-3">
-                                    <div class="col-sm-6">
-                                        <label for="exampleFormControlInput3778" class="form-label">Start Date</label>
-                                        <input name="start_date" type="date" class="form-control" value="{{$EducationDetails->start_date}}" id="exampleFormControlInput3778">
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <label for="exampleFormControlInput2778" class="form-label">End Date</label>
-                                        <input name="end_date" type="date" class="form-control" value="{{$EducationDetails->end_date}}" id="exampleFormControlInput2778">
-                                    </div>
-                                </div>                            
-                        </div>
-                        <div class="mb-3">
-                            <label for="exampleFormControlInput577" class="form-label">Grade</label>
-                            <input name="grade" type="text" class="form-control" id="exampleFormControlInput577" value="{{$EducationDetails->grade}}" placeholder="Enter Grade">
+                        <div class="mb-3">     
+                            <label for="exampleFormControlInput877" class="form-label">Organization Name</label>
+                            <input name="conference_organization_name" type="text" class="form-control" id="exampleFormControlInput877" value="{{$ConferenceProceedingDetails->conference_organization_name}}" placeholder="Enter Conference Organization Name">
                         </div>
                         <div class="mb-3">          
                             <label for="exampleFormControlTextarea78" class="form-label">Description (optional)</label>
-                            <textarea name="description" class="form-control" id="exampleFormControlTextarea78" rows="3" placeholder="Add any extra details">{{$EducationDetails->description}}</textarea>
-                        </div> 
+                            <textarea name="description" class="form-control" id="exampleFormControlTextarea78" rows="3" placeholder="Add any extra details">{{$ConferenceProceedingDetails->description}}</textarea>
+                        </div>
                         
                     </div>
+
+                    </div>
+                    
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                         <button type="submit" class="btn btn-primary" onclick="submit()">Save</button>

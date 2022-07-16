@@ -42,6 +42,13 @@ class PatentController extends Controller
         $paper->domain=$request->domain;
         $paper->year=$request->year;
         $paper->patent_holders=$request->patent_holders;
+        $paper->patent_link=$request->patent_link;
+        if($file=$request->file('patent_pdf')){
+                    $name=$file->getClientOriginalName();
+                    if($file->move('patent_pdf',$name)){
+                        $paper->patent_pdf_path=$name;
+                    }
+                }
         
         $paper->user_id=$request->id;
 
@@ -70,6 +77,13 @@ class PatentController extends Controller
         $paper->domain=$request->domain;
         $paper->year=$request->year;
         $paper->patent_holders=$request->patent_holders;
+        $paper->patent_link=$request->patent_link;
+        if($file=$request->file('patent_pdf')){
+                    $name=$file->getClientOriginalName();
+                    if($file->move('patent_pdf',$name)){
+                        $paper->patent_pdf_path=$name;
+                    }
+                }
         
         
         $paper->save();

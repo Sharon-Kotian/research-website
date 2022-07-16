@@ -1,6 +1,6 @@
 
 <!doctype html>
-<html class="no-js" lang="en" dir="ltr">
+<html  lang="en" dir="ltr">
 
 <head>
     <meta charset="utf-8">
@@ -11,13 +11,128 @@
     <link rel="icon" href="favicon.ico" type="image/x-icon"> <!-- Favicon-->
     <!-- project css file  -->
     <link rel="stylesheet" href="http://localhost:8000/assets/css/my-task.style.min.css">
+
+    <style>
+        table,th,td{
+            border:1px solid black;
+        }
+    </style>
+    <script type="text/javascript">
+
+        function exportData(){
+            /* Get the HTML data using Element by Id */
+            var table = document.getElementById("data_table");
+        
+            /* Declaring array variable */
+            var rows =[];
+        
+            //iterate through rows of table
+            for(var i=0,row; row = table.rows[i];i++){
+                //rows would be accessed using the "row" variable assigned in the for loop
+                //Get each cell value/column from the row
+                column1 = row.cells[0].innerText;
+                column2 = row.cells[1].innerText;
+                column3 = row.cells[2].innerText;
+                column4 = row.cells[3].innerText;
+                column5 = row.cells[4].innerText;
+                column6 = row.cells[5].innerText;
+                column7 = row.cells[6].innerText;
+                column8 = row.cells[7].innerText;
+                column9 = row.cells[8].innerText;
+        
+            /* add a new records in the array */
+                rows.push(
+                    [
+                        column1,
+                        column2,
+                        column3,
+                        column4,
+                        column5,
+                        column6,
+                        column7,
+                        column8,
+                        column9
+                    ]
+                );
+        
+                }
+                csvContent = "data:text/csv;charset=utf-8,";
+                /* add the column delimiter as comma(,) and each row splitted by new line character (\n) */
+                rows.forEach(function(rowArray){
+                    row = rowArray.join(",");
+                    csvContent += row + "\r\n";
+                });
+        
+                /* create a hidden <a> DOM node and set its download attribute */
+                var encodedUri = encodeURI(csvContent);
+                var link = document.createElement("a");
+                link.setAttribute("href", encodedUri);
+                link.setAttribute("download", "Data_Faculty.csv");
+                document.body.appendChild(link);
+                /* download the data file named "Stock_Price_Report.csv" */
+                link.click();
+        }
+
+
+        function l(){
+            document.getElementById('name_div').style.display="block";
+                document.getElementById('year_div').style.display="none";
+                document.getElementById('domain_div').style.display="none";
+            // document.getElementById('name_div').style.visibility="visible";
+            // document.getElementById('year_div').style.visibility="hidden";
+            // document.getElementById('domain_div').style.visibility="hidden";
+        }
+        function change(){
+            var status=document.getElementById("search_by");
+            console.log("Hello"+status.value);
+            if(status.value==="Name"){
+                console.log("Name if");
+                document.getElementById('name_div').style.display="block";
+                document.getElementById('year_div').style.display="none";
+                document.getElementById('domain_div').style.display="none";
+
+            //     document.getElementById('name_div').style.visibility="visible";
+            // document.getElementById('year_div').style.visibility="hidden";
+            // document.getElementById('domain_div').style.visibility="hidden";
+            }
+            else if(status.value==="Domain"){
+                console.log("Domain if");
+
+                document.getElementById('name_div').style.display="none";
+                document.getElementById('year_div').style.display="none";
+                document.getElementById('domain_div').style.display="block";
+            //     document.getElementById('name_div').style.visibility="hidden";
+            // document.getElementById('year_div').style.visibility="hidden";
+            // document.getElementById('domain_div').style.visibility="visible";
+            }
+            else if(status.value==="Year"){
+                console.log("Year if");
+
+                document.getElementById('name_div').style.display="none";
+                document.getElementById('year_div').style.display="block";
+                document.getElementById('domain_div').style.display="none";
+            //     document.getElementById('name_div').style.visibility="hidden";
+            // document.getElementById('year_div').style.visibility="visible";
+            // document.getElementById('domain_div').style.visibility="hidden";
+            }
+            else{
+
+            }
+        }
+
+        function myFunction(){
+            document.getElementById("demo").innerHTML="Hello World";
+        }
+    </script>
+    
 </head>
-<body>
+<body onload="l()">
+
 
 <div id="mytask-layout" class="theme-indigo">
 
     <!-- sidebar -->
-    <div class="sidebar px-4 py-4 py-md-5 me-0" style="width:400px;">
+    <!-- <div class="sidebar px-4 py-4 py-md-5 me-0" style="width:400px;">
         <div class="d-flex flex-column h-100">
             <a href="index.html" class="mb-0 brand-icon">
                 <span class="logo-icon">
@@ -42,7 +157,7 @@
                 </label>
             @endforeach
             </ul>
-            <!-- <div style="color:white">
+             <div style="color:white">
                                 
                         
                         
@@ -88,8 +203,8 @@
 
 
             
-        </div>
-    </div>
+        <!--</div>
+    </div> -->
 
     <!-- main body area -->
     <div class="main px-lg-4 px-md-4">
@@ -145,6 +260,13 @@
                 </div>
             </nav>
         </div>
+        <?php
+            //$edus=\App\Models\Patent::where("user_id",$user->id)->count();
+            $edus=DB::select("SELECT user_id, count(*) as count FROM patents GROUP BY user_id ORDER BY COUNT(*) DESC limit 5");
+            $rdus=DB::select("SELECT user_id, count(*) as count FROM papers GROUP BY user_id ORDER BY COUNT(*) DESC limit 5");
+            $tdus=DB::select("SELECT user_id, count(*) as count FROM books GROUP BY user_id ORDER BY COUNT(*) DESC limit 5");
+        
+        ?>
 
         <!-- Body: Body -->
         <div class="body d-flex py-lg-3 py-md-2">
@@ -154,29 +276,169 @@
                         <div class="card border-0 mb-4 no-bg">
                             <div class="card-header py-3 px-0 d-sm-flex align-items-center  justify-content-between border-bottom">
 
+                            <div class="row g-3 row-cols-1 row-cols-sm-1 row-cols-md-1 row-cols-lg-3 row-cols-xl-3 row-cols-xxl-3 row-deck py-1 pb-4">
+                            <div class="col">
+                                <div class="card teacher-card" style="height:160px;background-image: linear-gradient(to bottom right, #581845, #FF5733)">
+                                <h2>Top 5 Patent Holders</h2> 
+                                <div class="teacher-info border-start ps-xl-4 ps-md-3 ps-sm-4 ps-4 w-800 h-800 " style="width:1400px;height:600px;">
                                 
-                                <h3 class=" fw-bold flex-fill mb-0 mt-sm-0">Search Results</h3>
+                                    @foreach($edus as $edu)
+                                        <?php $user=\App\Models\User::find($edu->user_id);?>
+                                        {{$user->firstName}} {{$user->lastName}}
+                                        {{$edu->user_id}}  {{$edu->count}} <br>
+                                    @endforeach                                   
+                                    <!-- <i class="icofont-certificate-alt-1 icofont-10x"></i> -->
+                                            <!-- <div style="margin-left:300px; margin-top:-100px;"><h6 class="mb-0 mt-2  fw-bold d-block" style="font-size:30px;">Papers</h6><h5 class="mb-0 mt-2  fw-bold d-block" style="font-size:30px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1</h5></div>
+                                             -->
+                                            
+                                            
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <div class="col">
+                                <div class="card teacher-card" style="height:160px;background-image:linear-gradient(to bottom right, #cc0066, #ff99cc);">
+                                    
+                                <div class="teacher-info border-start ps-xl-4 ps-md-3 ps-sm-4 ps-4 w-300 h-300 ">
+                                        <!-- <i class="icofont-certificate-alt-1 icofont-10x"></i> -->
+                                            <!-- <div style="margin-left:300px; margin-top:-100px;"><h6 class="mb-0 mt-2  fw-bold d-block" style="font-size:30px;">Papers</h6><h5 class="mb-0 mt-2  fw-bold d-block" style="font-size:30px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1</h5></div>
+                                             -->
+                                             <div><h2>Top 5 Paper Holders</h2></div>
+                                             @foreach($rdus as $rdu)
+                                        <?php $user=\App\Models\User::find($rdu->user_id);?>
+                                        {{$user->firstName}} {{$user->lastName}}
+                                        {{$rdu->user_id}}  {{$rdu->count}} <br>
+                                    @endforeach  
+                                            
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                <div class="card teacher-card" style="height:160px;background-image: linear-gradient(to bottom right, #8E0E00,#1F1C18);">
+                                    
+                                <div class="teacher-info border-start ps-xl-4 ps-md-3 ps-sm-4 ps-4 w-100 h-100 ">
+                                        <!-- <i class="icofont-certificate-alt-1 icofont-10x"></i> -->
+                                            <!-- <div style="margin-left:300px; margin-top:-100px;"><h6 class="mb-0 mt-2  fw-bold d-block" style="font-size:30px;">Papers</h6><h5 class="mb-0 mt-2  fw-bold d-block" style="font-size:30px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1</h5></div>
+                                             -->
+                                             <div><h2>Top 5 Book Authors</h2></div>
+                                             @foreach($tdus as $tdu)
+                                        <?php $user=\App\Models\User::find($tdu->user_id);?>
+                                        {{$user->firstName}} {{$user->lastName}}
+                                        {{$tdu->user_id}}  {{$tdu->count}} <br>
+                                    @endforeach 
+                                            
+                                            
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                
+                                
+                                <!-- <h3 class=" fw-bold flex-fill mb-0 mt-sm-0">Search Results</h3> -->
                                 <!-- <button type="button" class="btn btn-dark me-1 mt-1 w-sm-100" data-bs-toggle="modal" data-bs-target="#createemp"><i class="icofont-plus-circle me-2 fs-6"></i>Add Education</button> -->
                                 
                             </div>
                         </div>
                     </div>
                 </div><!-- Row End -->
-                <div class="row g-3 row-cols-1 row-cols-sm-1 row-cols-md-1 row-cols-lg-2 row-cols-xl-2 row-cols-xxl-2 row-deck py-1 pb-4">
+                <div>
+                    <div>
+                        Search By : 
+                        <select id="search_by" onchange="change()">
+                            <option value="Name">Name</option>
+                            <option value="Year">Year</option>
+                            <option value="Domain">Domain</option>
+                        </select>
+                    </div>
+                    <div id="name_div">
+                        <form method="post" enctype="multipart/form-data" action="{{ url('admin/searchName')}}">
+                            @csrf
+                            <input type="text" placeholder="Enter Name to Search" name="name_search">
+                            <input type="submit" value="Search">
+                        </form>
+                    </div>
+                    <div id="year_div">
+                    <form method="post" enctype="multipart/form-data" action="{{ url('admin/searchYear')}}">
+                    @csrf
+                            <input type="number" min=1990 max=2200 placeholder="Enter Year to Search" name="year_search">
+                            <input type="submit" value="Search">
+                        </form>
+                    </div>
+                    <div id="domain_div">
+                    <form method="post" enctype="multipart/form-data" action="{{ url('user/searchDomain')}}">
+                    @csrf
+                                @foreach($domains as $domain)
+                                  <label class="d-block" for="{{$domain->domain_of_expertise}}">
+                                    <input id="{{$domain->domain_of_expertise}}" type="checkbox" name="domain[]" value="{{$domain->domain_of_expertise}}"><span style="font-size:20px;color:black;">&nbsp;&nbsp;{{$domain->domain_of_expertise}}</span>
+                                  </label>
+                                  @endforeach
+                            <input type="submit" value="Search">
+                        </form>
+                    </div>
+
+                    <button onclick="exportData()">Click For Download</button>
+                    <p id="demo"></p>
+                    
+                </div>
+
+                <div>
+                    <table id="data_table" style="border:1px solid red;border-collapse:collapse;width:100%;">
+                        <tr>
+                            <th>ID</th>
+                            <th>First Name</th>
+                            <th>Last Name</th>
+                            <th>Email</th>
+                            <th>Gender</th>
+                            <th>Employee ID</th>
+                            <th>Designation</th>
+                            <th>Date of Joining</th>
+                            <th>Domain of Expertise</th>
+                        </tr>
+
+                        @if(isset($users))
+                        @foreach($users as $user)
+                            <tr>
+                                <td>{{$user->id}}</td>
+                                <td>{{$user->firstName}}</td>
+                                <td>{{$user->lastName}}</td>
+                                <td>{{$user->email}}</td>
+                                @if($user->gender==0)
+                                <td>Male</td>
+                                @else
+                                <td>Female</td>
+                                @endif
+                                <td>{{$user->employee_id}}</td>
+                                <td>{{$user->designation}}</td>
+                                <td>{{$user->date_of_joining}}</td>
+                                <td>{{$user->domain_of_expertise}}</td>
+                            </tr>
+                        @endforeach
+                        @endif
+
+                    </table>
+                </div>
+                <!-- <div class="row g-3 row-cols-1 row-cols-sm-1 row-cols-md-1 row-cols-lg-2 row-cols-xl-2 row-cols-xxl-2 row-deck py-1 pb-4">
                 
                 <?php
                     $edus=\App\Models\Education::where("user_id",$user->id)->count();
                 ?>
+
+                
+                 -->
+
                 
                 
                        
     </div>
 </div>
 
+
 <!-- Jquery Core Js -->
-<script src="http://localhost:8000/assets/bundles/libscripts.bundle.js"></script>
+<!-- <script src="http://localhost:8000/assets/bundles/libscripts.bundle.js"></script> -->
 
 <!-- Jquery Page Js -->
 <!--<script src="http://localhost:8000/js/template.js"></script>-->
 </body>
+
+
 </html>

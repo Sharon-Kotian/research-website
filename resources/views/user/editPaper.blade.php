@@ -60,7 +60,10 @@
                     <li><a class="m-link" href="{{url('/user/project')}}"><i class="icofont-atom"></i> <span>Projects</span></a></li>
                         <li><a class="m-link" href="{{url('/user/consultancy')}}"><i class="icofont-users-alt-2"></i> <span>Consultancy</span></a></li>
                         <li><a class="m-link" href="{{url('/user/membership')}}"><i class="icofont-company"></i> <span>Membership</span></a></li>
-                
+                        <li><a class="m-link" href="{{url('/user/fdp')}}"><i class="icofont-education"></i> <span>FDP</span></a></li>
+                        <li><a class="m-link" href="{{url('/user/mdp')}}"><i class="icofont-university"></i> <span>MDP</span></a></li>
+                        <li><a class="m-link" href="{{url('/user/certification')}}"><i class="icofont-certificate-alt-2"></i> <span>Certification</span></a></li>
+                        <li><a class="m-link" href="{{url('/user/conferenceProceeding')}}"><i class="icofont-lawyer-alt-2"></i> <span>Conference Proceeding</span></a></li>
             </ul>
 
 
@@ -198,6 +201,15 @@
                             <input name="category_of_journal" type="radio" style="width:30px" id="exampleFormControlInput277" value="Indexing">Indexing
                             <input name="category_of_journal" type="radio" style="width:30px" id="exampleFormControlInput277" value="ABDC Listed">ABDC Listed
                             <input name="category_of_journal" type="radio" style="width:30px" id="exampleFormControlInput277" value="UGC Listed">UGC Listed
+                            <input name="category_of_journal" type="radio" style="width:30px" id="exampleFormControlInput277" value="Scopus">Scopus
+                            @elseif($PaperDetails->category_of_journal=="Scopus")
+                            <input name="category_of_journal" type="radio" style="width:30px" id="exampleFormControlInput977" value="National">National
+                            <!--<label for="exampleFormControlInput277" class="form-label">Non-Funded</label>-->
+                            <input name="category_of_journal" type="radio" style="width:30px" id="exampleFormControlInput277" value="International">International
+                            <input name="category_of_journal" type="radio" style="width:30px" id="exampleFormControlInput277" value="Indexing">Indexing
+                            <input name="category_of_journal" type="radio" style="width:30px" id="exampleFormControlInput277" value="ABDC Listed">ABDC Listed
+                            <input name="category_of_journal" type="radio" style="width:30px" id="exampleFormControlInput277" value="UGC Listed">UGC Listed
+                            <input name="category_of_journal" type="radio" style="width:30px" id="exampleFormControlInput277" value="Scopus" checked>Scopus
                             @elseif($PaperDetails->category_of_journal=="International")
                             <input name="category_of_journal" type="radio" style="width:30px" id="exampleFormControlInput977" value="National">National
                             <!--<label for="exampleFormControlInput277" class="form-label">Non-Funded</label>-->
@@ -205,6 +217,7 @@
                             <input name="category_of_journal" type="radio" style="width:30px" id="exampleFormControlInput277" value="Indexing">Indexing
                             <input name="category_of_journal" type="radio" style="width:30px" id="exampleFormControlInput277" value="ABDC Listed">ABDC Listed
                             <input name="category_of_journal" type="radio" style="width:30px" id="exampleFormControlInput277" value="UGC Listed">UGC Listed
+                            <input name="category_of_journal" type="radio" style="width:30px" id="exampleFormControlInput277" value="Scopus">Scopus
                             @elseif($PaperDetails->category_of_journal=="Indexing")
                             <input name="category_of_journal" type="radio" style="width:30px" id="exampleFormControlInput977" value="National">National
                             <!--<label for="exampleFormControlInput277" class="form-label">Non-Funded</label>-->
@@ -212,6 +225,7 @@
                             <input name="category_of_journal" type="radio" style="width:30px" id="exampleFormControlInput277" value="Indexing" checked>Indexing
                             <input name="category_of_journal" type="radio" style="width:30px" id="exampleFormControlInput277" value="ABDC Listed">ABDC Listed
                             <input name="category_of_journal" type="radio" style="width:30px" id="exampleFormControlInput277" value="UGC Listed">UGC Listed
+                            <input name="category_of_journal" type="radio" style="width:30px" id="exampleFormControlInput277" value="Scopus">Scopus
                             @elseif($PaperDetails->category_of_journal=="ABDC Listed")
                             <input name="category_of_journal" type="radio" style="width:30px" id="exampleFormControlInput977" value="National">National
                             <!--<label for="exampleFormControlInput277" class="form-label">Non-Funded</label>-->
@@ -219,6 +233,7 @@
                             <input name="category_of_journal" type="radio" style="width:30px" id="exampleFormControlInput277" value="Indexing">Indexing
                             <input name="category_of_journal" type="radio" style="width:30px" id="exampleFormControlInput277" value="ABDC Listed" checked>ABDC Listed
                             <input name="category_of_journal" type="radio" style="width:30px" id="exampleFormControlInput277" value="UGC Listed">UGC Listed
+                            <input name="category_of_journal" type="radio" style="width:30px" id="exampleFormControlInput277" value="Scopus">Scopus
                             @else
                             <input name="category_of_journal" type="radio" style="width:30px" id="exampleFormControlInput977" value="National">National
                             <!--<label for="exampleFormControlInput277" class="form-label">Non-Funded</label>-->
@@ -226,6 +241,7 @@
                             <input name="category_of_journal" type="radio" style="width:30px" id="exampleFormControlInput277" value="Indexing">Indexing
                             <input name="category_of_journal" type="radio" style="width:30px" id="exampleFormControlInput277" value="ABDC Listed">ABDC Listed
                             <input name="category_of_journal" type="radio" style="width:30px" id="exampleFormControlInput277" value="UGC Listed" checked>UGC Listed
+                            <input name="category_of_journal" type="radio" style="width:30px" id="exampleFormControlInput277" value="Scopus">Scopus
                             @endif
                         </div>
                         <div class="mb-3">
@@ -279,7 +295,7 @@
                         
                         <label for="exampleFormControlTextarea78" class="form-label">Add PDF of Paper</label>
                             <input type="file" name="paper_pdf" accept="application/pdf"><br><br>
-                        <a class="btn btn-primary" href="{{asset('paper_pdf/'.$PaperDetails->paper_pdf_path)}}">View Your Uploaded PDF</a>
+                        <a class="btn btn-primary" href="{{asset('patent_pdf/'.$PaperDetails->paper_pdf_path)}}">View Your Uploaded PDF</a>
                         <!-- <iframe height="200" width="200" src="{{asset('paper_pdf/'.$PaperDetails->paper_pdf_path)}}"></iframe> -->
                         <br><br>
                         

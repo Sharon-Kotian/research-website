@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=Edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     
-    <title>:: My-Profile:: Book/Book Chapter</title>
+    <title>:: My-Profile:: Certification</title>
     <link rel="icon" href="favicon.ico" type="image/x-icon"> <!-- Favicon-->
     <!-- project css file  -->
     <link rel="stylesheet" href="http://localhost:8000/assets/css/my-task.style.min.css">
@@ -64,6 +64,7 @@
                         <li><a class="m-link" href="{{url('/user/mdp')}}"><i class="icofont-university"></i> <span>MDP</span></a></li>
                         <li><a class="m-link" href="{{url('/user/certification')}}"><i class="icofont-certificate-alt-2"></i> <span>Certification</span></a></li>
                         <li><a class="m-link" href="{{url('/user/conferenceProceeding')}}"><i class="icofont-lawyer-alt-2"></i> <span>Conference Proceeding</span></a></li>
+                
             </ul>
 
 
@@ -100,9 +101,11 @@
                                             <div class="flex-fill ms-3">
                                                 <p class="mb-0"><span class="font-weight-bold">{{$user->firstName}} {{$user->lastName}}</span></p>
                                                 <small class="">{{$user->email}}</small>
+
+                                                
                                             </div>
                                             <div style="display:flex;margin-left:-100px;text-align:left;">
-                                            <a href="{{url('logout')}}">Logout</a>
+                                                <a href="{{url('logout')}}">Logout</a>
                                             </div>
                                         </div>
                                     </div>
@@ -134,7 +137,7 @@
                     <div class="col-md-12">
                         <div class="card border-0 mb-4 no-bg">
                             <div class="card-header py-3 px-0 d-sm-flex align-items-center  justify-content-between border-bottom">
-                                <h3 class=" fw-bold flex-fill mb-0 mt-sm-0">Books/Book Chapters</h3>
+                                <h3 class=" fw-bold flex-fill mb-0 mt-sm-0">Certifications</h3>
                                 
                             </div>
                         </div>
@@ -145,7 +148,7 @@
             
             
                 
-            <form method="post" enctype="multipart/form-data" action="{{ url('user/editEducation')}}/{{$EducationDetails->id}}">
+            <form method="post" enctype="multipart/form-data" action="{{ url('user/editCertification')}}/{{$CertificationDetails->id}}">
                     @csrf
                     @if(Session::has('loginError'))
                     <div class="alert alert-danger alert-dismissible fade show" role="alert">
@@ -184,38 +187,38 @@
                         </button>
                     </div>
                 @endif
-                  <div class="mb-3">     
-                            <label for="exampleFormControlInput877" class="form-label">University Name</label>
-                            <input name="university_name" type="text" class="form-control" id="exampleFormControlInput877" value="{{$EducationDetails->university_name}}" placeholder="Enter University Name">
+                <div class="mb-3">     
+                            <label for="exampleFormControlInput877" class="form-label">Certification Title</label>
+                            <input name="title" type="text" class="form-control" id="exampleFormControlInput877" value="{{$CertificationDetails->title}}" placeholder="Enter Certification Title">
                         </div>
-                        <div class="mb-3">
-                            <label for="exampleFormControlInput977" class="form-label">Degree</label>
-                            <input name="degree" type="text" class="form-control" id="exampleFormControlInput977" value="{{$EducationDetails->degree}}" placeholder="Enter Degree">
-                        </div>
-                        <div class="mb-3">
-                            <label for="exampleFormControlInput677" class="form-label">Field of Study</label>
-                            <input name="field_of_study" type="text" class="form-control" id="exampleFormControlInput677" value="{{$EducationDetails->field_of_study}}" placeholder="Enter Field of Study">
+                        <div class="mb-3">     
+                            <label for="exampleFormControlInput877" class="form-label">Issuing Organization Name</label>
+                            <input name="organization_name" type="text" class="form-control" id="exampleFormControlInput877" value="{{$CertificationDetails->organization_name}}" placeholder="Enter Issuing Organization Name">
                         </div>
                         <div class="deadline-form">
                             
                                 <div class="row g-3 mb-3">
                                     <div class="col-sm-6">
-                                        <label for="exampleFormControlInput3778" class="form-label">Start Date</label>
-                                        <input name="start_date" type="date" class="form-control" value="{{$EducationDetails->start_date}}" id="exampleFormControlInput3778">
+                                        <label for="exampleFormControlInput3778" class="form-label">Date of Issue</label>
+                                        <input name="issue_date" type="date" class="form-control" value="{{$CertificationDetails->issue_date}}" id="exampleFormControlInput3778">
                                     </div>
                                     <div class="col-sm-6">
-                                        <label for="exampleFormControlInput2778" class="form-label">End Date</label>
-                                        <input name="end_date" type="date" class="form-control" value="{{$EducationDetails->end_date}}" id="exampleFormControlInput2778">
+                                        <label for="exampleFormControlInput2778" class="form-label">Date of Expiry</label>
+                                        <input name="expiry_date" type="date" class="form-control" value="{{$CertificationDetails->expiry_date}}" id="exampleFormControlInput2778">
                                     </div>
+                                    
                                 </div>                            
                         </div>
-                        <div class="mb-3">
-                            <label for="exampleFormControlInput577" class="form-label">Grade</label>
-                            <input name="grade" type="text" class="form-control" id="exampleFormControlInput577" value="{{$EducationDetails->grade}}" placeholder="Enter Grade">
-                        </div>
+                        <div class="mb-3">          
+                            <label for="exampleFormControlTextarea78" class="form-label">Add PDF of Certification</label>
+                            <input type="file" name="certification_pdf" accept="application/pdf"><br>
+                            <a class="btn btn-primary" href="{{asset('certification_pdf/'.$CertificationDetails->certification_pdf_path)}}">View Your Uploaded PDF</a>
+                        </div> 
+                        
+                        
                         <div class="mb-3">          
                             <label for="exampleFormControlTextarea78" class="form-label">Description (optional)</label>
-                            <textarea name="description" class="form-control" id="exampleFormControlTextarea78" rows="3" placeholder="Add any extra details">{{$EducationDetails->description}}</textarea>
+                            <textarea name="description" class="form-control" id="exampleFormControlTextarea78" rows="3" placeholder="Add any extra details">{{$CertificationDetails->description}}</textarea>
                         </div> 
                         
                     </div>
@@ -224,7 +227,6 @@
                         <button type="submit" class="btn btn-primary" onclick="submit()">Save</button>
                     </div> 
                     </form>
-
                 
                   
             </div>

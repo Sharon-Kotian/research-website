@@ -47,6 +47,8 @@ Route::group(['prefix' => '/'], function()
 Route::group(['prefix' => '/admin'], function()
 {
     Route::get('basicSearchView', [AdminController::class, 'basicSearchView']);
+    Route::post('searchName',[AdminController::class,'nameSearch']);
+    Route::post('searchYear',[AdminController::class,'yearSearch']);
     //Route::post('login', [UserController::class, 'loginAttempt']);
     
     //Route::get('dashboard', [UserController::class, 'dashboard']);
@@ -57,7 +59,6 @@ Route::group(['prefix' => '/user'], function()
     Route::get('dashboard', [UserController::class, 'dashboard']);
     Route::get('profile/{id}',[UserController::class,'getProfileEdit']);
     Route::post('editProfile/{id}',[UserController::class,'postProfileEdit']);
-    
 
     Route::get('education', [EducationController::class, 'education_view']);
     Route::post('addEducation/{id}', [EducationController::class, 'addEducation']);
@@ -77,11 +78,30 @@ Route::group(['prefix' => '/user'], function()
     Route::post('editMembership/{id}',[MembershipController::class,'postMembershipEdit']);
     Route::get('deleteMembership/{id}',[MembershipController::class,'deleteMembership']);
 
+    Route::get('caseStudy', [CaseStudyController::class, 'caseStudy_view']);
+    Route::post('addCaseStudy/{id}', [CaseStudyController::class, 'addCaseStudy']);
+    Route::get('editCaseStudy/{id}',[CaseStudyController::class,'getCaseStudyEdit']);
+    Route::post('editCaseStudy/{id}',[CaseStudyController::class,'postCaseStudyEdit']);
+    Route::get('deleteCaseStudy/{id}',[CaseStudyController::class,'deleteCaseStudy']);
+
+    Route::get('certification', [CertificationController::class, 'certification_view']);
+    Route::post('addCertification/{id}', [CertificationController::class, 'addCertification']);
+    Route::get('editCertification/{id}',[CertificationController::class,'getCertificationEdit']);
+    Route::post('editCertification/{id}',[CertificationController::class,'postCertificationEdit']);
+    Route::get('deleteCertification/{id}',[CertificationController::class,'deleteCertification']);
+
+
     Route::get('fdp', [FDPController::class, 'fdp_view']);
     Route::post('addFdp/{id}', [FDPController::class, 'addFdp']);
     Route::get('editFdp/{id}',[FDPController::class,'getFdpEdit']);
     Route::post('editFdp/{id}',[FDPController::class,'postFdpEdit']);
     Route::get('deleteFdp/{id}',[FDPController::class,'deleteFdp']);
+
+    Route::get('mdp', [MDPController::class, 'mdp_view']);
+    Route::post('addMdp/{id}', [MDPController::class, 'addMdp']);
+    Route::get('editMdp/{id}',[MDPController::class,'getMdpEdit']);
+    Route::post('editMdp/{id}',[MDPController::class,'postMdpEdit']);
+    Route::get('deleteMdp/{id}',[MDPController::class,'deleteMdp']);
 
     Route::get('paper', [PaperController::class, 'paper_view']);
     Route::post('addPaper/{id}', [PaperController::class, 'addPaper']);
@@ -94,6 +114,12 @@ Route::group(['prefix' => '/user'], function()
     Route::get('editBook/{id}',[BookController::class,'getBookEdit']);
     Route::post('editBook/{id}',[BookController::class,'postBookEdit']);
     Route::get('deleteBook/{id}',[BookController::class,'deleteBook']);
+
+    Route::get('conferenceProceeding', [ConferenceProceedingController::class, 'conferenceProceeding_view']);
+    Route::post('addConferenceProceeding/{id}', [ConferenceProceedingController::class, 'addConferenceProceeding']);
+    Route::get('editConferenceProceeding/{id}',[ConferenceProceedingController::class,'getConferenceProceedingEdit']);
+    Route::post('editConferenceProceeding/{id}',[ConferenceProceedingController::class,'postConferenceProceedingEdit']);
+    Route::get('deleteConferenceProceeding/{id}',[ConferenceProceedingController::class,'deleteConferenceProceeding']);
 
 
     Route::get('patent', [PatentController::class, 'patent_view']);

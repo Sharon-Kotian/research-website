@@ -60,7 +60,10 @@
                     <li><a class="m-link" href="{{url('/user/project')}}"><i class="icofont-atom"></i> <span>Projects</span></a></li>
                         <li><a class="m-link" href="{{url('/user/consultancy')}}"><i class="icofont-users-alt-2"></i> <span>Consultancy</span></a></li>
                         <li><a class="m-link" href="{{url('/user/membership')}}"><i class="icofont-company"></i> <span>Membership</span></a></li>
-                
+                        <li><a class="m-link" href="{{url('/user/fdp')}}"><i class="icofont-education"></i> <span>FDP</span></a></li>
+                        <li><a class="m-link" href="{{url('/user/mdp')}}"><i class="icofont-university"></i> <span>MDP</span></a></li>
+                        <li><a class="m-link" href="{{url('/user/certification')}}"><i class="icofont-certificate-alt-2"></i> <span>Certification</span></a></li>
+                        <li><a class="m-link" href="{{url('/user/conferenceProceeding')}}"><i class="icofont-lawyer-alt-2"></i> <span>Conference Proceeding</span></a></li>
             </ul>
 
 
@@ -170,6 +173,7 @@
                                     
                                     <span class="light-info-bg py-1 px-2 rounded-1 d-inline-block fw-bold small-11 mb-0 mt-1">{{$mem->membership_id}}</span>
                                     <div class="video-setting-icon mt-3 pt-3 border-top">
+                                        <p><b>Type :</b> {{$mem->type}}</p>
                                         <p><b>From :</b> {{$mem->start_date}} &nbsp&nbsp  <b>To :</b> {{$mem->end_date}}</p>
                                         <p>{{$mem->description}}</p>
                                     </div>
@@ -244,6 +248,10 @@
                         <div class="mb-3">
                             <label for="exampleFormControlInput677" class="form-label">Membership ID</label>
                             <input name="membership_id" type="text" class="form-control" id="exampleFormControlInput677" placeholder="Enter Membership ID">
+                        </div>
+                        <div class="mb-3">
+                            <label for="exampleFormControlInput677" class="form-label">Membership Type</label>
+                            <input name="type" type="text" class="form-control" id="exampleFormControlInput677" placeholder="Enter Membership Type">
                         </div>
                         <div class="deadline-form">
                             
