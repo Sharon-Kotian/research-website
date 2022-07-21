@@ -1,4 +1,3 @@
-
 <!doctype html>
 <html  lang="en" dir="ltr">
 
@@ -16,9 +15,191 @@
         table,th,td{
             border:1px solid black;
         }
+
+        * {box-sizing: border-box}
+body {font-family: Verdana, sans-serif; margin:0}
+.mySlides {display: none}
+img {vertical-align: middle;}
+
+/* Slideshow container */
+.slideshow-container {
+  max-width: 1000px;
+  position: relative;
+  margin: auto;
+}
+
+/* Next & previous buttons */
+.prev, .next {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  width: auto;
+  padding: 16px;
+  margin-top: -22px;
+  color: white;
+  font-weight: bold;
+  font-size: 18px;
+  transition: 0.6s ease;
+  border-radius: 0 3px 3px 0;
+  user-select: none;
+}
+
+/* Position the "next button" to the right */
+.next {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+
+/* On hover, add a black background color with a little bit see-through */
+.prev:hover, .next:hover {
+  background-color: rgba(0,0,0,0.8);
+}
+
+/* Caption text */
+.text {
+  color: #f2f2f2;
+  /* font-size: 15px; */
+  /* padding: 8px 12px; */
+  /* position: absolute; */
+  bottom: 8px;
+  width: 100%;
+  text-align: center;
+}
+
+/* Number text (1/3 etc) */
+.numbertext {
+  color: #f2f2f2;
+  font-size: 12px;
+  padding: 8px 12px;
+  /* position: absolute; */
+  top: 0;
+}
+
+/* The dots/bullets/indicators */
+.dot {
+  cursor: pointer;
+  height: 15px;
+  width: 15px;
+  margin: 0 2px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+  transition: background-color 0.6s ease;
+}
+
+.active, .dot:hover {
+  background-color: #717171;
+}
+
+/* Fading animation */
+.fade {
+  animation-name: fade;
+  animation-duration: 1.5s;
+}
+
+@keyframes fade {
+  from {opacity: .4} 
+  to {opacity: 1}
+}
+
+/* On smaller screens, decrease text size */
+@media only screen and (max-width: 300px) {
+  .prev, .next,.text {font-size: 11px}
+}
+
+
+
+
+
+
+
+/* Slideshow container */
+.slideshow-container1 {
+  max-width: 1000px;
+  position: relative;
+  margin: auto;
+}
+
+/* Next & previous buttons */
+.prev1, .next1 {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  width: auto;
+  padding: 16px;
+  margin-top: -22px;
+  color: white;
+  font-weight: bold;
+  font-size: 18px;
+  transition: 0.6s ease;
+  border-radius: 0 3px 3px 0;
+  user-select: none;
+}
+
+/* Position the "next button" to the right */
+.next1 {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+
+/* On hover, add a black background color with a little bit see-through */
+.prev1:hover, .next1:hover {
+  background-color: rgba(0,0,0,0.8);
+}
+
+/* Caption text */
+.text1 {
+  color: #f2f2f2;
+  /* font-size: 15px; */
+  /* padding: 8px 12px; */
+  /* position: absolute; */
+  bottom: 8px;
+  width: 100%;
+  text-align: center;
+}
+
+/* Number text (1/3 etc) */
+.numbertext1 {
+  color: #f2f2f2;
+  font-size: 12px;
+  padding: 8px 12px;
+  /* position: absolute; */
+  top: 0;
+}
+
+/* The dots/bullets/indicators */
+.dot1 {
+  cursor: pointer;
+  height: 15px;
+  width: 15px;
+  margin: 0 2px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+  transition: background-color 0.6s ease;
+}
+
+.active, .dot1:hover {
+  background-color: #717171;
+}
+
+/* Fading animation */
+.fade1 {
+  animation-name: fade;
+  animation-duration: 1.5s;
+}
+
+@keyframes fade1 {
+  from {opacity: .4} 
+  to {opacity: 1}
+}
+
+/* On smaller screens, decrease text size */
+@media only screen and (max-width: 300px) {
+  .prev1, .next1,.text1 {font-size: 11px}
+}
     </style>
     <script type="text/javascript">
-
         function exportData(){
             /* Get the HTML data using Element by Id */
             var table = document.getElementById("data_table");
@@ -72,8 +253,6 @@
                 /* download the data file named "Stock_Price_Report.csv" */
                 link.click();
         }
-
-
         function l(){
             document.getElementById('name_div').style.display="block";
                 document.getElementById('year_div').style.display="none";
@@ -90,14 +269,12 @@
                 document.getElementById('name_div').style.display="block";
                 document.getElementById('year_div').style.display="none";
                 document.getElementById('domain_div').style.display="none";
-
             //     document.getElementById('name_div').style.visibility="visible";
             // document.getElementById('year_div').style.visibility="hidden";
             // document.getElementById('domain_div').style.visibility="hidden";
             }
             else if(status.value==="Domain"){
                 console.log("Domain if");
-
                 document.getElementById('name_div').style.display="none";
                 document.getElementById('year_div').style.display="none";
                 document.getElementById('domain_div').style.display="block";
@@ -107,7 +284,6 @@
             }
             else if(status.value==="Year"){
                 console.log("Year if");
-
                 document.getElementById('name_div').style.display="none";
                 document.getElementById('year_div').style.display="block";
                 document.getElementById('domain_div').style.display="none";
@@ -116,10 +292,8 @@
             // document.getElementById('domain_div').style.visibility="hidden";
             }
             else{
-
             }
         }
-
         function myFunction(){
             document.getElementById("demo").innerHTML="Hello World";
         }
@@ -306,29 +480,94 @@
                                              <div><h2>Top 5 Paper Holders</h2></div>
                                              @foreach($rdus as $rdu)
                                         <?php $user=\App\Models\User::find($rdu->user_id);?>
-                                        {{$user->firstName}} {{$user->lastName}}
-                                        {{$rdu->user_id}}  {{$rdu->count}} <br>
-                                    @endforeach  
+                                        <div class="mySlides1">
+
+    <div style="margin-left:50px;margin-top:20px;">
+    <img class="avatar xl rounded-circle" src="http://localhost:8000/assets/images/avatar2.jpg" alt="profile">
+    </div>
+  
+  <div class="text" style="margin-top:-100px;margin-left:60px;color:white;font-size:17px;"> 
+  Name : {{$user->firstName}} {{$user->lastName}}<br>
+                    Total No. of Books : {{$rdu->count}}</div> 
+</div>
+@endforeach 
+
+
+<a class="prev1" onclick="plusSlides1(-1)">❮</a>
+<a class="next1" onclick="plusSlides1(1)">❯</a>
+    </div>
+    
+
+<br>
+
+<div style="text-align:center">
+  <span class="dot1" onclick="currentSlide1(1)"></span> 
+  <span class="dot1" onclick="currentSlide1(2)"></span> 
+  <span class="dot1" onclick="currentSlide1(3)"></span> 
+  <span class="dot1" onclick="currentSlide1(4)"></span> 
+  <span class="dot1" onclick="currentSlide1(5)"></span> 
+</div>
+
+                                             
                                             
-                                        </div>
+                                            
+                                        
+                                    
+                               
+                                
+
+                                     
+                                            
+                                        
                                     </div>
                                 </div>
                                 <div class="col">
-                                <div class="card teacher-card" style="height:160px;background-image: linear-gradient(to bottom right, #8E0E00,#1F1C18);">
+                                <div class="card teacher-card" style="height:250px;background-image: linear-gradient(to bottom right, #8E0E00,#1F1C18);">
                                     
                                 <div class="teacher-info border-start ps-xl-4 ps-md-3 ps-sm-4 ps-4 w-100 h-100 ">
                                         <!-- <i class="icofont-certificate-alt-1 icofont-10x"></i> -->
                                             <!-- <div style="margin-left:300px; margin-top:-100px;"><h6 class="mb-0 mt-2  fw-bold d-block" style="font-size:30px;">Papers</h6><h5 class="mb-0 mt-2  fw-bold d-block" style="font-size:30px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1</h5></div>
                                              -->
                                              <div><h2>Top 5 Book Authors</h2></div>
+                                             
+
                                              @foreach($tdus as $tdu)
                                         <?php $user=\App\Models\User::find($tdu->user_id);?>
-                                        {{$user->firstName}} {{$user->lastName}}
-                                        {{$tdu->user_id}}  {{$tdu->count}} <br>
-                                    @endforeach 
+                                        <br>
+                                    
+
+<div class="mySlides">
+
+    <div style="margin-left:50px;margin-top:20px;">
+    <img class="avatar xl rounded-circle" src="http://localhost:8000/assets/images/avatar2.jpg" alt="profile">
+    </div>
+  
+  <div class="text" style="margin-top:-100px;margin-left:60px;color:white;font-size:17px;"> 
+  Name : {{$user->firstName}} {{$user->lastName}}<br>
+                    Total No. of Books : {{$tdu->count}}</div> 
+</div>
+@endforeach 
+
+
+<a class="prev" onclick="plusSlides(-1)">❮</a>
+<a class="next" onclick="plusSlides(1)">❯</a>
+    </div>
+    
+
+<br>
+
+<div style="text-align:center">
+  <span class="dot" onclick="currentSlide(1)"></span> 
+  <span class="dot" onclick="currentSlide(2)"></span> 
+  <span class="dot" onclick="currentSlide(3)"></span> 
+  <span class="dot" onclick="currentSlide(4)"></span> 
+  <span class="dot" onclick="currentSlide(5)"></span> 
+</div>
+
+                                             
                                             
                                             
-                                        </div>
+                                        
                                     </div>
                                 </div>
                                 
@@ -422,7 +661,6 @@
                 <?php
                     $edus=\App\Models\Education::where("user_id",$user->id)->count();
                 ?>
-
                 
                  -->
 
@@ -431,6 +669,71 @@
                        
     </div>
 </div>
+
+<script>
+let slideIndex = 1;
+showSlides(slideIndex);
+
+function plusSlides(n) {
+  showSlides(slideIndex += n);
+}
+
+function currentSlide(n) {
+  showSlides(slideIndex = n);
+}
+
+function showSlides(n) {
+  let i;
+  let slides = document.getElementsByClassName("mySlides");
+  let dots = document.getElementsByClassName("dot");
+  if (n > slides.length) {slideIndex = 1}    
+  if (n < 1) {slideIndex = slides.length}
+  for (i = 0; i < slides.length; i++) {
+    slides[i].style.display = "none";  
+  }
+  for (i = 0; i < dots.length; i++) {
+    dots[i].className = dots[i].className.replace(" active", "");
+  }
+  slides[slideIndex-1].style.display = "block";  
+  dots[slideIndex-1].className += " active";
+
+}
+
+
+
+let slideIndex1 = 1;
+showSlides1(slideIndex1);
+
+function plusSlides1(n) {
+  showSlides1(slideIndex1 += n);
+}
+
+function currentSlide1(n) {
+  showSlides1(slideIndex1 = n);
+}
+
+function showSlides1(n) {
+  let i;
+  let slides = document.getElementsByClassName("mySlides1");
+  let dots = document.getElementsByClassName("dot1");
+  if (n > slides.length) {slideIndex1 = 1}    
+  if (n < 1) {slideIndex1 = slides.length}
+  for (i = 0; i < slides.length; i++) {
+    slides[i].style.display = "none";  
+  }
+  for (i = 0; i < dots.length; i++) {
+    dots[i].className = dots[i].className.replace(" active", "");
+  }
+  slides[slideIndex1-1].style.display = "block";  
+  dots[slideIndex1-1].className += " active";
+}
+
+
+
+
+  
+
+</script>
 
 
 <!-- Jquery Core Js -->

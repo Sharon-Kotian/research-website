@@ -47,8 +47,14 @@ Route::group(['prefix' => '/'], function()
 Route::group(['prefix' => '/admin'], function()
 {
     Route::get('basicSearchView', [AdminController::class, 'basicSearchView']);
+    Route::get('usersAllSearch', [AdminController::class, 'usersAllSearch']);
+    Route::get('nameWiseSearch', [AdminController::class, 'nameWiseSearch']);
+    Route::get('educationWiseSearch', [AdminController::class, 'educationWiseSearch']);
+    Route::get('basicSearchDashboard', [AdminController::class, 'basicSearchDashboard']);
     Route::post('searchName',[AdminController::class,'nameSearch']);
+    Route::post('searchEducation',[AdminController::class,'educationSearch']);
     Route::post('searchYear',[AdminController::class,'yearSearch']);
+    Route::post('searchDomain',[AdminController::class,'domainSearch']);
     //Route::post('login', [UserController::class, 'loginAttempt']);
     
     //Route::get('dashboard', [UserController::class, 'dashboard']);
