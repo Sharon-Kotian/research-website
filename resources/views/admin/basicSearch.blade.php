@@ -450,7 +450,7 @@ img {vertical-align: middle;}
                         <div class="card border-0 mb-4 no-bg">
                             <div class="card-header py-3 px-0 d-sm-flex align-items-center  justify-content-between border-bottom">
 
-                            <div class="row g-3 row-cols-1 row-cols-sm-1 row-cols-md-1 row-cols-lg-3 row-cols-xl-3 row-cols-xxl-3 row-deck py-1 pb-4">
+                            <div class="row g-3 row-cols-1 row-cols-sm-1 row-cols-md-1 row-cols-lg-2 row-cols-xl-2 row-cols-xxl-2 row-deck py-1 pb-4">
                             <div class="col">
                                 <div class="card teacher-card" style="height:160px;background-image: linear-gradient(to bottom right, #581845, #FF5733)">
                                 <h2>Top 5 Patent Holders</h2> 

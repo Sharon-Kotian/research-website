@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=Edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     
-    <title>:: My-Profile:: Dashboard</title>
+    <title>:: My-Profile:: Education Search</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css" rel="stylesheet" />
 
 <link rel="icon" href="favicon.ico" type="image/x-icon">
@@ -19,7 +19,64 @@
 <script type="text/javascript">
         $(document).ready(function() {
             $("#nameSearch").select2();
+            $("#domains").select2();
 });
+
+
+
+function exportData(){
+            /* Get the HTML data using Element by Id */
+            var table = document.getElementById("data_table");
+        
+            /* Declaring array variable */
+            var rows =[];
+        
+            //iterate through rows of table
+            for(var i=0,row; row = table.rows[i];i++){
+                //rows would be accessed using the "row" variable assigned in the for loop
+                //Get each cell value/column from the row
+                column1 = row.cells[0].innerText;
+                column2 = row.cells[1].innerText;
+                column3 = row.cells[2].innerText;
+                column4 = row.cells[3].innerText;
+                column5 = row.cells[4].innerText;
+                column6 = row.cells[5].innerText;
+                column7 = row.cells[6].innerText;
+                column8 = row.cells[7].innerText;
+                //column9 = row.cells[8].innerText;
+        
+            /* add a new records in the array */
+                rows.push(
+                    [
+                        column1,
+                        column2,
+                        column3,
+                        column4,
+                        column5,
+                        column6,
+                        column7,
+                        column8,
+                        //column9
+                    ]
+                );
+        
+                }
+                csvContent = "data:text/csv;charset=utf-8,";
+                /* add the column delimiter as comma(,) and each row splitted by new line character (\n) */
+                rows.forEach(function(rowArray){
+                    row = rowArray.join(",");
+                    csvContent += row + "\r\n";
+                });
+        
+                /* create a hidden <a> DOM node and set its download attribute */
+                var encodedUri = encodeURI(csvContent);
+                var link = document.createElement("a");
+                link.setAttribute("href", encodedUri);
+                link.setAttribute("download", "Data_Faculty_Education.csv");
+                document.body.appendChild(link);
+                /* download the data file named "Stock_Price_Report.csv" */
+                link.click();
+        }
 
     </script>
 
@@ -59,11 +116,11 @@
             <!-- Menu: main ul -->
             <ul class="menu-list flex-grow-1 mt-3">
                 
-                <li class="collapsed">
-                    <a class="m-link" href="{{url('/user/profile')}}/{{$user->id}}"><i
+            <li class="collapsed">
+                    <a class="m-link" href="{{url('/admin/usersAllSearch')}}"><i
                             class="icofont-user-male"></i> <span>Users</span> </a></li>
-                            <li><a class="m-link" href="{{url('/user/education')}}"><i class="icofont-book-alt"></i> <span>Name</span></a></li>
-                            <li><a class="m-link" href="{{url('/user/education')}}"><i class="icofont-book-alt"></i> <span>Education</span></a></li>
+                            <li><a class="m-link" href="{{url('/admin/nameWiseSearch')}}"><i class="icofont-book-alt"></i> <span>Name</span></a></li>
+                            <li><a class="m-link" href="{{url('/admin/educationWiseSearch')}}"><i class="icofont-book-alt"></i> <span>Education</span></a></li>
 
                             
                         
@@ -74,9 +131,9 @@
                             class="icofont-law-book"></i> <span>Publications</span> <span class="arrow icofont-dotted-down ms-auto text-end fs-5"></span></a>
                             <!-- Menu: Sub menu ul -->
                                 <ul class="sub-menu collapse" id="client-Components1">
-                                    <li><a class="ms-link" href="{{url('/user/paper')}}"> <span>Paper</span></a></li>
-                                    <li><a class="ms-link" href="{{url('/user/book')}}"> <span>Book/Book Chapter</span></a></li>
-                                    <li><a class="ms-link" href="{{url('/user/patent')}}"> <span>Patent</span></a></li>
+                                    <li><a class="ms-link" href="{{url('/admin/paperWiseSearch')}}"> <span>Paper</span></a></li>
+                                    <li><a class="ms-link" href="{{url('/admin/bookWiseSearch')}}"> <span>Book/Book Chapter</span></a></li>
+                                    <li><a class="ms-link" href="{{url('/admin/patentWiseSearch')}}"> <span>Patent</span></a></li>
                                 </ul>
                         </li>
 
@@ -84,14 +141,15 @@
                    
                     <!-- Menu: Sub menu ul -->
                     
-                    <li><a class="m-link" href="{{url('/user/project')}}"><i class="icofont-atom"></i> <span>Projects</span></a></li>
-                        <li><a class="m-link" href="{{url('/user/consultancy')}}"><i class="icofont-users-alt-2"></i> <span>Consultancy</span></a></li>
-                        <li><a class="m-link" href="{{url('/user/membership')}}"><i class="icofont-company"></i> <span>Membership</span></a></li>
-                        <li><a class="m-link" href="{{url('/user/fdp')}}"><i class="icofont-education"></i> <span>FDP</span></a></li>
-                        <li><a class="m-link" href="{{url('/user/mdp')}}"><i class="icofont-university"></i> <span>MDP</span></a></li>
-                        <li><a class="m-link" href="{{url('/user/certification')}}"><i class="icofont-certificate-alt-2"></i> <span>Certification</span></a></li>
-                        <li><a class="m-link" href="{{url('/user/conferenceProceeding')}}"><i class="icofont-lawyer-alt-2"></i> <span>Conference Proceeding</span></a></li>
+                    <li><a class="m-link" href="{{url('/admin/projectWiseSearch')}}"><i class="icofont-atom"></i> <span>Projects</span></a></li>
+                        <li><a class="m-link" href="{{url('/admin/consultancyWiseSearch')}}"><i class="icofont-users-alt-2"></i> <span>Consultancy</span></a></li>
+                        <li><a class="m-link" href="{{url('/admin/membershipWiseSearch')}}"><i class="icofont-company"></i> <span>Membership</span></a></li>
+                        <li><a class="m-link" href="{{url('/admin/fdpWiseSearch')}}"><i class="icofont-education"></i> <span>FDP</span></a></li>
+                        <li><a class="m-link" href="{{url('/admin/mdpWiseSearch')}}"><i class="icofont-university"></i> <span>MDP</span></a></li>
+                        <li><a class="m-link" href="{{url('/admin/certificationWiseSearch')}}"><i class="icofont-certificate-alt-2"></i> <span>Certification</span></a></li>
+                        <li><a class="m-link" href="{{url('/admin/conferenceWiseSearch')}}"><i class="icofont-lawyer-alt-2"></i> <span>Conference Proceeding</span></a></li>
             </ul>
+
 
 
             
@@ -160,7 +218,7 @@
                     <div class="col-md-12">
                         <div class="card border-0 mb-4 no-bg">
                             <div class="card-header py-3 px-0 d-sm-flex align-items-center  justify-content-between border-bottom">
-                                <h3 class=" fw-bold flex-fill mb-0 mt-sm-0">Dashboard</h3>
+                                <h3 class=" fw-bold flex-fill mb-0 mt-sm-0">Education Wise Search</h3>
                                 <!-- <button type="button" class="btn btn-dark me-1 mt-1 w-sm-100" data-bs-toggle="modal" data-bs-target="#createemp"><i class="icofont-plus-circle me-2 fs-6"></i>Add Education</button> -->
                                 
                             </div>
@@ -181,7 +239,7 @@
 <?php $domains= \App\Models\Education::all()->unique('field_of_study'); ?>
                         <form method="post" enctype="multipart/form-data" action="{{ url('admin/searchEducation')}}">
                             @csrf
-                            <input class="btn-primary" type="submit" value="Search">
+                <label for="nameSearch" class="form-label">Name</label>
                 <select class="form-control" id="nameSearch" name="name_search">
                     <option value="all" selected>--SELECT ALL--</option>
                     @foreach($us as $u)
@@ -189,8 +247,9 @@
                     @endforeach
                 </select>
                 <br><br>
+                <label for="year_search" class="form-label">Year</label>
                 <select name="year_search">
-                <option value="all" selected>--SELECT ALL--</option>
+                <option value="null" selected>--SELECT ALL--</option>
                     <option>1980-1981</option>
                     <option>1981-1982</option>
                     <option>1982-1983</option>
@@ -244,7 +303,7 @@
                 </select><br><br>
                 
                 <!-- <input type="checkbox" name="domain_search[]" value="all" checked>--SELECT ALL--<br> -->
-                @foreach($domains as $domain)
+                <!-- @foreach($domains as $domain)
                 <input type="checkbox" name="domain_search[]" value="{{$domain->field_of_study}}">{{$domain->field_of_study}}<br>
                 @endforeach
 
@@ -252,7 +311,19 @@
                                   <label for="{{$domain->field_of_study}}">
                                     <input id="{{$domain->field_of_study}}" type="checkbox" name="domain[]" value="{{$domain->field_of_study}}"><span style="font-size:20px;color:black;">&nbsp;&nbsp;{{$domain->field_of_study}}</span>
                                   </label>
-                                  @endforeach
+                                  @endforeach -->
+
+                <label for="domains" class="form-label">Field of Study</label>
+                <select name="domain_search[]" id="domains" multiple="multiple">
+                    @foreach($domains as $domain)
+                        <option>{{$domain->field_of_study}}</option>
+                    @endforeach
+                </select><br><br>
+
+
+                <input class="btn-primary" type="submit" value="Search">
+
+                
                 
                 
                 <!-- <input type="checkbox" name="domain_search[]" value="all" checked><span style="font-size:20px;color:black;">--SELECT ALL--</span>
@@ -272,7 +343,7 @@
     <br><br><br><br>
 
 
-           <div style="margin-left:-600px;margin-top:150px;">     
+           <!-- <div style="margin-left:-600px;margin-top:150px;">     
         @if(isset($users))
                 @foreach($users as $user)
                     
@@ -288,21 +359,23 @@
                     </div>
                 @endforeach
         @endif
-    </div>
+    </div> -->
 
-                
-                
-               <!-- <table id="data_table" style="border:1px solid red;border-collapse:collapse;width:100%;font-size:15px;">
+    <div style="margin-top:200px;margin-left:-600px;">            
+        <button onclick="exportData()" width="10px" height="10px">Click For Download</button> 
+    </div><br><br>
+    <div style="margin-left:-600px;margin-top:300px;width:100%"> 
+               <table id="data_table" style="border:1px solid red;border-collapse:collapse;width:100%;font-size:15px;">
                         <tr>
                             <th>ID</th>
                             <th>First Name</th>
                             <th>Last Name</th>
-                            <th>Email</th>
-                            <th>Gender</th>
-                            <th>Employee ID</th>
-                            <th>Designation</th>
-                            <th>Date of Joining</th>
-                            <th>Domain of Expertise</th>
+                            <th>University Name</th>
+                            <th>Degree</th>
+                            <th>Field of Study</th>
+                            <th>Grade</th>
+                            <th>Description</th>
+                            <!-- <th>Domain of Expertise</th>
                             <th>Papers</th>
                             <th>Patents</th>
                             <th>Books</th>
@@ -313,7 +386,7 @@
                             
                             <th>FDP</th>
                             <th>MDP</th>
-                            <th>Conference Proceeding</th>
+                            <th>Conference Proceeding</th> -->
                            
                         </tr>
                         @if(isset($users))
@@ -322,50 +395,33 @@
                                 <td>{{$user->id}}</td>
                                 <td>{{$user->firstName}}</td>
                                 <td>{{$user->lastName}}</td>
-                                <td>{{$user->email}}</td>
-                                @if($user->gender==0)
+                                <td>{{$user->university_name}}</td>
+                                <!-- @if($user->gender==0)
                                 <td>Male</td>
                                 @else
                                 <td>Female</td>
-                                @endif
-                                <td>{{$user->employee_id}}</td>
-                                <td>{{$user->designation}}</td>
-                                <td>{{$user->date_of_joining}}</td>
-                                <td>{{$user->domain_of_expertise}}</td>
-                                <?php
-                                $edus=\App\Models\Patent::where("user_id",$user->id)->count();
-                    $edus1=\App\Models\Paper::where("user_id",$user->id)->count();
-                    $edus2=\App\Models\Book::where("user_id",$user->id)->count();
-                    $edus3=\App\Models\Certification::where("user_id",$user->id)->count();
-                    $edus4=\App\Models\Projects::where("user_id",$user->id)->count();
-                    $edus5=\App\Models\Membership::where("user_id",$user->id)->count();
-                    $edus6=\App\Models\Consultancy::where("user_id",$user->id)->count();
-                    $edus7=\App\Models\FDP::where("user_id",$user->id)->count();
-                    $edus8=\App\Models\MDP::where("user_id",$user->id)->count();
-                    $edus9=\App\Models\ConferenceProceeding::where("user_id",$user->id)->count();
-                    ?>
-                                <td>{{$edus1}}</td>
-                                <td>{{$edus}}</td>
-                                <td>{{$edus2}}</td>
-                                <td>{{$edus3}}</td>
-                                <td>{{$edus4}}</td>
-                                <td>{{$edus5}}</td>
-                                <td>{{$edus6}}</td>
-                                <td>{{$edus7}}</td>
-                                <td>{{$edus8}}</td>
-                                <td>{{$edus9}}</td>
+                                @endif -->
+                                <td>{{$user->degree}}</td>
+                                <td>{{$user->field_of_study}}</td>
+                                <td>{{$user->grade}}</td>
+                                <td>{{$user->description}}</td>
+                                
+                                
 
                             </tr>
                         @endforeach
                         @endif
 
-                    </table>-->
+    </table>
+    </div>
 
                 
                         <!--</div>-->
                         </div>
             </div>
         </div>
+
+
         
        <!-- Modal Members-->
        

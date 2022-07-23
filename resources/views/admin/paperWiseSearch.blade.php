@@ -1,4 +1,3 @@
-
 <!doctype html>
 <html class="no-js" lang="en" dir="ltr">
 
@@ -7,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=Edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     
-    <title>:: My-Profile:: Dashboard</title>
+    <title>:: My-Profile:: Paper Wise Search</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css" rel="stylesheet" />
 
 <link rel="icon" href="favicon.ico" type="image/x-icon">
@@ -19,7 +18,66 @@
 <script type="text/javascript">
         $(document).ready(function() {
             $("#nameSearch").select2();
+            $("#domains").select2();
+            $("#status_search").select2();
+            $("#category_search").select2();
 });
+
+
+
+function exportData(){
+            /* Get the HTML data using Element by Id */
+            var table = document.getElementById("data_table");
+        
+            /* Declaring array variable */
+            var rows =[];
+        
+            //iterate through rows of table
+            for(var i=0,row; row = table.rows[i];i++){
+                //rows would be accessed using the "row" variable assigned in the for loop
+                //Get each cell value/column from the row
+                column1 = row.cells[0].innerText;
+                column2 = row.cells[1].innerText;
+                column3 = row.cells[2].innerText;
+                column4 = row.cells[3].innerText;
+                column5 = row.cells[4].innerText;
+                column6 = row.cells[5].innerText;
+                column7 = row.cells[6].innerText;
+                column8 = row.cells[7].innerText;
+                //column9 = row.cells[8].innerText;
+        
+            /* add a new records in the array */
+                rows.push(
+                    [
+                        column1,
+                        column2,
+                        column3,
+                        column4,
+                        column5,
+                        column6,
+                        column7,
+                        column8,
+                        //column9
+                    ]
+                );
+        
+                }
+                csvContent = "data:text/csv;charset=utf-8,";
+                /* add the column delimiter as comma(,) and each row splitted by new line character (\n) */
+                rows.forEach(function(rowArray){
+                    row = rowArray.join(",");
+                    csvContent += row + "\r\n";
+                });
+        
+                /* create a hidden <a> DOM node and set its download attribute */
+                var encodedUri = encodeURI(csvContent);
+                var link = document.createElement("a");
+                link.setAttribute("href", encodedUri);
+                link.setAttribute("download", "Data_Faculty_Education.csv");
+                document.body.appendChild(link);
+                /* download the data file named "Stock_Price_Report.csv" */
+                link.click();
+        }
 
     </script>
 
@@ -94,6 +152,7 @@
             </ul>
 
 
+
             
         </div>
     </div>
@@ -160,7 +219,7 @@
                     <div class="col-md-12">
                         <div class="card border-0 mb-4 no-bg">
                             <div class="card-header py-3 px-0 d-sm-flex align-items-center  justify-content-between border-bottom">
-                                <h3 class=" fw-bold flex-fill mb-0 mt-sm-0">Name Wise Search</h3>
+                                <h3 class=" fw-bold flex-fill mb-0 mt-sm-0">Paper Wise Search</h3>
                                 <!-- <button type="button" class="btn btn-dark me-1 mt-1 w-sm-100" data-bs-toggle="modal" data-bs-target="#createemp"><i class="icofont-plus-circle me-2 fs-6"></i>Add Education</button> -->
                                 
                             </div>
@@ -178,34 +237,173 @@
                 ?>
 
 <div id="name_div">
-                        <form method="post" enctype="multipart/form-data" action="{{ url('admin/searchName')}}">
+<?php $domains= \App\Models\Education::all()->unique('field_of_study'); ?>
+                        <form method="post" enctype="multipart/form-data" action="{{ url('admin/searchPaper')}}">
                             @csrf
+                <label for="nameSearch" class="form-label">Name</label>
                 <select class="form-control" id="nameSearch" name="name_search">
+                    <option value="all" selected>--SELECT ALL--</option>
                     @foreach($us as $u)
                         <option value="{{$u->id}}">{{$u->firstName}} {{$u->lastName}}</option>
                     @endforeach
+                </select>
+                <br><br>
+                <label for="year_search" class="form-label">Year</label>
+                <select name="year_search">
+                <option value="null" selected>--SELECT ALL--</option>
+                    <option>1980-1981</option>
+                    <option>1981-1982</option>
+                    <option>1982-1983</option>
+                    <option>1983-1984</option>
+                    <option>1984-1985</option>
+                    <option>1985-1986</option>
+                    <option>1986-1987</option>
+                    <option>1987-1988</option>
+                    <option>1988-1989</option>
+                    <option>1989-1990</option>
+                    <option>1990-1991</option>
+                    <option>1991-1992</option>
+                    <option>1992-1993</option>
+                    <option>1993-1994</option>
+                    <option>1994-1995</option>
+                    <option>1995-1996</option>
+                    <option>1996-1997</option>
+                    <option>1997-1998</option>
+                    <option>1998-1999</option>
+                    <option>1999-2000</option>
+                    <option>2000-2001</option>
+                    <option>2001-2002</option>
+                    <option>2002-2003</option>
+                    <option>2003-2004</option>
+                    <option>2004-2005</option>
+                    <option>2005-2006</option>
+                    <option>2006-2007</option>
+                    <option>2007-2008</option>
+                    <option>2008-2009</option>
+                    <option>2009-2010</option>
+                    <option>2010-2011</option>
+                    <option>2011-2012</option>
+                    <option>2012-2013</option>
+                    <option>2013-2014</option>
+                    <option>2014-2015</option>
+                    <option>2015-2016</option>
+                    <option>2016-2017</option>
+                    <option>2017-2018</option>
+                    <option>2018-2019</option>
+                    <option>2019-2020</option>
+                    <option>2020-2021</option>
+                    <option>2021-2022</option>
+                    <option>2022-2023</option>
+                    <option>2023-2024</option>
+                    <option>2024-2025</option>
+                    <option>2025-2026</option>
+                    <option>2026-2027</option>
+                    <option>2027-2028</option>
+                    <option>2028-2029</option>
+                    <option>2029-2030</option>
+                </select><br><br>
+                
+                <!-- <input type="checkbox" name="domain_search[]" value="all" checked>--SELECT ALL--<br> -->
+                <!-- @foreach($domains as $domain)
+                <input type="checkbox" name="domain_search[]" value="{{$domain->field_of_study}}">{{$domain->field_of_study}}<br>
+                @endforeach
+
+                @foreach($domains as $domain)
+                                  <label for="{{$domain->field_of_study}}">
+                                    <input id="{{$domain->field_of_study}}" type="checkbox" name="domain[]" value="{{$domain->field_of_study}}"><span style="font-size:20px;color:black;">&nbsp;&nbsp;{{$domain->field_of_study}}</span>
+                                  </label>
+                                  @endforeach -->
+
+
+                <!-- <select name="domain_search[]" id="domains" multiple="multiple">
+                    @foreach($domains as $domain)
+                        <option>{{$domain->field_of_study}}</option>
+                    @endforeach
+                </select> -->
+                <label for="category_search" class="form-label">Category of Journal</label>
+                <select name="category_search[]" id="category_search" multiple="multiple">
+                    
+                    <option>National</option>
+                    <option>International</option>
+                    <option>Indexing</option>
+                    <option>ABDC Listed</option>
+                    <option>UGC Listed</option>
+                    <option>Scopus</option>
+                </select>
+
+                <label for="status_search" class="form-label">Status</label>
+                <select name="status_search[]" id="status_search" multiple="multiple">
+                    
+                    <option>Published</option>
+                    <option>Accepted</option>
+                    <option>Under Review</option>
                 </select><br><br>
                 <input class="btn-primary" type="submit" value="Search">
+
+
+                
+                        
+                
+                
+                
+                <!-- <input type="checkbox" name="domain_search[]" value="all" checked><span style="font-size:20px;color:black;">--SELECT ALL--</span>
+                <input type="checkbox" name="domain_search[]" value="AI"><span style="font-size:20px;color:black;">AI</span>
+            
+            @foreach($domains as $domain)
+                <input id="{{$domain->field_of_study}}" type="checkbox" name="domain_search[]" value="{{$domain->field_of_study}}"><span style="font-size:20px;color:black;">&nbsp;&nbsp;{{$domain->field_of_study}}</span>
+                @endforeach -->
+                
+                
+                <!-- <input class="btn-primary" type="submit" value="Search"> -->
+            
+            
+                
     </form>
     </div>
+    <br><br><br><br>
 
 
-                
+           <div style="margin-left:-600px;margin-top:250px;">     
+        @if(isset($users))
+                @foreach($users as $user)
+                    
+                    <div>
+                        <br>
+
+                        <b>{{$user->firstName}} {{$user->lastName}}</b><br>
+                        <b>Paper Topic :</b> {{$user->paper_topic}}<br>
+                        <b>Publication Name :</b> {{$user->publication_name}}<br>
+                        <b>Volume :</b> {{$user->volume}}<br>
+                        <b>Category of Journal :</b> {{$user->category_of_journal}}<br>
+                        <b>Authors/Co-Authors :</b> {{$user->authors_co_authors}}<br>
+                        <b>Status :</b> {{$user->status}}<br>
+                        <b>Paper Link :</b> {{$user->paper_link}}<br>
+                        <b>Start Date :</b> {{$user->start_date}}<br>
+                        <b>Abstract :</b> {{$user->description}}<br>
 
 
-                
-                
-                <table id="data_table" style="border:1px solid red;border-collapse:collapse;width:100%;font-size:15px;">
+                        <!-- <a href="{{url('/admin/download')}}/{{$user->paper_pdf_path}}" download="{{$user->paper_pdf_path}}">Download</a> -->
+                        <a href="{{url('/admin/download')}}/{{$user->paper_pdf_path}}"><i class="icofont-bubble-down"></i>Download</a>
+                    </div>
+                @endforeach
+        @endif
+    </div> 
+
+    <!--<div style="margin-top:200px;margin-left:-600px;">            
+        <button onclick="exportData()" width="10px" height="10px">Click For Download</button> 
+    </div><br><br>
+    <div style="margin-left:-600px;margin-top:300px;width:100%"> 
+               <table id="data_table" style="border:1px solid red;border-collapse:collapse;width:100%;font-size:15px;">
                         <tr>
                             <th>ID</th>
                             <th>First Name</th>
                             <th>Last Name</th>
-                            <th>Email</th>
-                            <th>Gender</th>
-                            <th>Employee ID</th>
-                            <th>Designation</th>
-                            <th>Date of Joining</th>
-                            <th>Domain of Expertise</th>
+                            <th>University Name</th>
+                            <th>Degree</th>
+                            <th>Field of Study</th>
+                            <th>Grade</th>
+                            <th>Description</th>-->
+                            <!-- <th>Domain of Expertise</th>
                             <th>Papers</th>
                             <th>Patents</th>
                             <th>Books</th>
@@ -216,60 +414,25 @@
                             
                             <th>FDP</th>
                             <th>MDP</th>
-                            <th>Conference Proceeding</th>
+                            <th>Conference Proceeding</th> -->
                            
-                        </tr>
+                        <!--</tr>
                         @if(isset($users))
                         @foreach($users as $user)
-                            <tr>
-                                <td>{{$user->id}}</td>
-                                <td>{{$user->firstName}}</td>
-                                <td>{{$user->lastName}}</td>
-                                <td>{{$user->email}}</td>
-                                @if($user->gender==0)
-                                <td>Male</td>
-                                @else
-                                <td>Female</td>
-                                @endif
-                                <td>{{$user->employee_id}}</td>
-                                <td>{{$user->designation}}</td>
-                                <td>{{$user->date_of_joining}}</td>
-                                <td>{{$user->domain_of_expertise}}</td>
-                                <?php
-                                $edus=\App\Models\Patent::where("user_id",$user->id)->count();
-                    $edus1=\App\Models\Paper::where("user_id",$user->id)->count();
-                    $edus2=\App\Models\Book::where("user_id",$user->id)->count();
-                    $edus3=\App\Models\Certification::where("user_id",$user->id)->count();
-                    $edus4=\App\Models\Projects::where("user_id",$user->id)->count();
-                    $edus5=\App\Models\Membership::where("user_id",$user->id)->count();
-                    $edus6=\App\Models\Consultancy::where("user_id",$user->id)->count();
-                    $edus7=\App\Models\FDP::where("user_id",$user->id)->count();
-                    $edus8=\App\Models\MDP::where("user_id",$user->id)->count();
-                    $edus9=\App\Models\ConferenceProceeding::where("user_id",$user->id)->count();
-                    ?>
-                                <td>{{$edus1}}</td>
-                                <td>{{$edus}}</td>
-                                <td>{{$edus2}}</td>
-                                <td>{{$edus3}}</td>
-                                <td>{{$edus4}}</td>
-                                <td>{{$edus5}}</td>
-                                <td>{{$edus6}}</td>
-                                <td>{{$edus7}}</td>
-                                <td>{{$edus8}}</td>
-                                <td>{{$edus9}}</td>
-
-                            </tr>
+                            
                         @endforeach
                         @endif
 
-                    </table>
-
+    </table>
+    </div>-->
 
                 
                         <!--</div>-->
                         </div>
             </div>
         </div>
+
+
         
        <!-- Modal Members-->
        

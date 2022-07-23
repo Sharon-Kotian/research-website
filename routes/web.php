@@ -50,11 +50,38 @@ Route::group(['prefix' => '/admin'], function()
     Route::get('usersAllSearch', [AdminController::class, 'usersAllSearch']);
     Route::get('nameWiseSearch', [AdminController::class, 'nameWiseSearch']);
     Route::get('educationWiseSearch', [AdminController::class, 'educationWiseSearch']);
+    Route::get('patentWiseSearch', [AdminController::class, 'patentWiseSearch']);
+    Route::get('projectWiseSearch', [AdminController::class, 'projectWiseSearch']);
+    Route::get('consultancyWiseSearch', [AdminController::class, 'consultancyWiseSearch']);
+    Route::get('membershipWiseSearch', [AdminController::class, 'membershipWiseSearch']);
+    Route::get('fdpWiseSearch', [AdminController::class, 'fdpWiseSearch']);
+    Route::get('mdpWiseSearch', [AdminController::class, 'mdpWiseSearch']);
+    Route::get('certificationWiseSearch', [AdminController::class, 'certificationWiseSearch']);
+    Route::get('conferenceWiseSearch', [AdminController::class, 'conferenceWiseSearch']);
+    Route::get('bookWiseSearch', [AdminController::class, 'bookWiseSearch']);
+    Route::get('paperWiseSearch', [AdminController::class, 'paperWiseSearch']);
     Route::get('basicSearchDashboard', [AdminController::class, 'basicSearchDashboard']);
     Route::post('searchName',[AdminController::class,'nameSearch']);
     Route::post('searchEducation',[AdminController::class,'educationSearch']);
+    Route::post('searchPatent',[AdminController::class,'patentSearch']);
+    Route::post('searchProject',[AdminController::class,'projectSearch']);
+    Route::post('searchConsultancy',[AdminController::class,'consultancySearch']);
+    Route::post('searchMembership',[AdminController::class,'membershipSearch']);
+    Route::post('searchFDP',[AdminController::class,'fdpSearch']);
+    Route::post('searchMDP',[AdminController::class,'mdpSearch']);
+    Route::post('searchCertification',[AdminController::class,'certificationSearch']);
+    Route::post('searchConference',[AdminController::class,'conferenceSearch']);
+    Route::post('searchBook',[AdminController::class,'bookSearch']);
+    Route::post('searchPaper',[AdminController::class,'paperSearch']);
     Route::post('searchYear',[AdminController::class,'yearSearch']);
     Route::post('searchDomain',[AdminController::class,'domainSearch']);
+    Route::get('download/{paper_pdf_path}',[AdminController::class,'download']);
+    Route::get('downloadPatent/{patent_pdf_path}',[AdminController::class,'downloadPatent']);
+    Route::get('downloadCertification/{certification_pdf_path}',[AdminController::class,'downloadCertification']);
+
+
+
+    Route::get('file/download/{id}',[AdminController::class,'downloadFile']);
     //Route::post('login', [UserController::class, 'loginAttempt']);
     
     //Route::get('dashboard', [UserController::class, 'dashboard']);
