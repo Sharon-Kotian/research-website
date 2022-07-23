@@ -361,7 +361,7 @@ function exportData(){
         @endif
     </div> -->
 
-    <div style="margin-top:200px;margin-left:-600px;">            
+    <div style="margin-top:250px;margin-left:-600px;">            
         <button onclick="exportData()" width="10px" height="10px">Click For Download</button> 
     </div><br><br>
     <div style="margin-left:-600px;margin-top:300px;width:100%"> 
