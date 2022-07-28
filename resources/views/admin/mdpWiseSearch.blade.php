@@ -99,7 +99,7 @@ function exportData(){
     <!-- sidebar -->
     <div class="sidebar px-4 py-4 py-md-5 me-0">
         <div class="d-flex flex-column h-100">
-            <a href="{{url('user/dashboard')}}" class="mb-0 brand-icon">
+            <a href="{{url('admin/basicSearchDashboard')}}" class="mb-0 brand-icon">
                 <span class="logo-icon">
                     <svg  width="35" height="35" fill="currentColor" class="bi bi-clipboard-check" viewBox="0 0 16 16">
                         <path fill-rule="evenodd" d="M10.854 7.146a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L7.5 9.793l2.646-2.647a.5.5 0 0 1 .708 0z"/>
@@ -235,15 +235,19 @@ function exportData(){
 
                         <form method="post" enctype="multipart/form-data" action="{{ url('admin/searchMDP')}}">
                             @csrf
-                            <label for="nameSearch" class="form-label">Name</label>
+                            <table style="width:1000px;border:none">
+                            <tr style="border:none">
+                                <td style="border:none">
+                                <label for="nameSearch" class="form-label">Name</label>
                             <select class="form-control" id="nameSearch" name="name_search">
                     <option value="all" selected>--SELECT ALL--</option>
                     @foreach($us as $u)
                         <option value="{{$u->id}}">{{$u->firstName}} {{$u->lastName}}</option>
                     @endforeach
                 </select>
-                <br><br>
-                <label for="year_search" class="form-label">Name</label>
+                                </td>
+                                <td style="border:none">
+                                <label for="year_search" class="form-label">Year</label>
                 <select name="year_search">
                 <option value="null" selected>--SELECT ALL--</option>
                     <option>1980-1981</option>
@@ -296,7 +300,12 @@ function exportData(){
                     <option>2027-2028</option>
                     <option>2028-2029</option>
                     <option>2029-2030</option>
-                </select><br><br>
+                </select>
+                                </td>
+                            </tr>
+                    </table>    
+                <br><br>
+                <br><br>
                 
                
 

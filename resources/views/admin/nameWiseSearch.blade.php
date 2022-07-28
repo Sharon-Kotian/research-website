@@ -34,7 +34,7 @@
 <style>
         table,th,td{
             border:1px solid black;
-            cell-padding:5px;
+            padding:10px;
         }
     </style>
 </head>
@@ -46,7 +46,7 @@
     <!-- sidebar -->
     <div class="sidebar px-4 py-4 py-md-5 me-0">
         <div class="d-flex flex-column h-100">
-            <a href="{{url('user/dashboard')}}" class="mb-0 brand-icon">
+            <a href="{{url('admin/basicSearchDashboard')}}" class="mb-0 brand-icon">
                 <span class="logo-icon">
                     <svg  width="35" height="35" fill="currentColor" class="bi bi-clipboard-check" viewBox="0 0 16 16">
                         <path fill-rule="evenodd" d="M10.854 7.146a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L7.5 9.793l2.646-2.647a.5.5 0 0 1 .708 0z"/>
@@ -195,7 +195,7 @@
 
                 
                 
-                <table id="data_table" style="border:1px solid red;border-collapse:collapse;width:100%;font-size:15px;">
+                <table id="data_table" style="border:1px solid red;border-collapse:collapse;width:100%;font-size:15px;padding:20px;">
                         <tr>
                             <th>ID</th>
                             <th>First Name</th>

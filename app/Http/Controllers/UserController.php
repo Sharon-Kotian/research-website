@@ -107,7 +107,7 @@ class UserController extends Controller
                 //$ad->last_login=Carbon::now();
                 $ad->update();
                 if($ad->role=='admin'){
-                    return redirect('admin/basicSearchView');
+                    return redirect('admin/basicSearchDashboard');
                 }
                 else{
                     return redirect('user/dashboard');

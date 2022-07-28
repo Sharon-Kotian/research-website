@@ -301,7 +301,7 @@
                             <label for="exampleFormControlTextarea78" class="form-label">Description (optional)</label>
                             <textarea name="description" class="form-control" id="exampleFormControlTextarea78" rows="3" placeholder="Add any extra details">{{$BookDetails->description}}</textarea>
                         </div> 
-                        <div>
+                        <!-- <div> 
                     <label for="exampleFormControlInput877" class="form-label">Conference Proceeding Information</label>
                     <div class="mb-3">     
                             <label for="exampleFormControlInput877" class="form-label">Name</label>
@@ -320,7 +320,7 @@
                             <input name="conference_organization_name" type="text" class="form-control" id="exampleFormControlInput877" value="{{$BookDetails->conference_organization_name}}" placeholder="Enter Conference Organization Name">
                         </div>
                         
-                    </div>
+                    </div> -->
 
                     </div>
                     

@@ -314,7 +314,7 @@ img {vertical-align: middle;}
     <!-- sidebar -->
     <div class="sidebar px-4 py-4 py-md-5 me-0">
         <div class="d-flex flex-column h-100">
-            <a href="{{url('admin/usersAllSearch')}}" class="mb-0 brand-icon">
+            <a href="{{url('admin/basicSearchDashboard')}}" class="mb-0 brand-icon">
                 <span class="logo-icon">
                     <svg  width="35" height="35" fill="currentColor" class="bi bi-clipboard-check" viewBox="0 0 16 16">
                         <path fill-rule="evenodd" d="M10.854 7.146a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L7.5 9.793l2.646-2.647a.5.5 0 0 1 .708 0z"/>
@@ -475,14 +475,14 @@ img {vertical-align: middle;}
                                     </div>
                                 </div>-->
                                 <div class="teacher-info border-start ps-xl-4 ps-md-3 ps-sm-4 ps-4 w-100 h-100 ">
-                                <div><h2>Top 5 Patent Holders</h2></div>
+                                <div><center><h2 style="font-family:Algerian">Top 5 Patent Holders</h2></center></div>
                                              @foreach($edus as $rdu)
                                         <?php $user=\App\Models\User::find($rdu->user_id);?>
                                         <div class="mySlides1">
 
     <div style="margin-left:50px;margin-top:20px;">
     @if($user->gender==1)
-    <img class="avatar xl rounded-circle" src="http://localhost:8000/assets/images/avatar2.jpg" alt="profile">
+    <img class="avatar xl rounded-circle" src="http://localhost:8000/assets/images/lg/avatar12.jpg" alt="profile">
     @else
     <img class="avatar xl rounded-circle" src="http://localhost:8000/assets/images/lg/avatar5.jpg" alt="profile">
     @endif
@@ -530,14 +530,15 @@ img {vertical-align: middle;}
                             
                         <div class="teacher-info border-start ps-xl-4 ps-md-3 ps-sm-4 ps-4 w-100 h-100 ">
                                 <!-- <i class="icofont-certificate-alt-1 icofont-10x"></i> -->
-                                <div><h2>Top 5 Paper Holders</h2></div>
+                                <div><center><h2 style="font-family:Algerian">Top 5 Paper Holders</h2></center></div>
+                                
                                              @foreach($rdus as $rdu)
                                         <?php $user=\App\Models\User::find($rdu->user_id);?>
                                         <div class="mySlides">
 
     <div style="margin-left:50px;margin-top:20px;">
     @if($user->gender==1)
-    <img class="avatar xl rounded-circle" src="http://localhost:8000/assets/images/avatar2.jpg" alt="profile">
+    <img class="avatar xl rounded-circle" src="http://localhost:8000/assets/images/lg/avatar12.jpg" alt="profile">
     @else
     <img class="avatar xl rounded-circle" src="http://localhost:8000/assets/images/lg/avatar5.jpg" alt="profile">
     @endif
@@ -582,14 +583,15 @@ img {vertical-align: middle;}
                         <div class="card teacher-card" style="height:200px;width:600px;margin-left:300px;margin-top:50px;background-image: linear-gradient(to bottom right, CadetBlue, Aqua);">
                             
                         <div class="teacher-info border-start ps-xl-4 ps-md-3 ps-sm-4 ps-4 w-100 h-100 ">
-                        <div><h2>Top 5 Book Authors</h2></div>
+                        <div><center><h2 style="font-family:Algerian">Top 5 Book Holders</h2></center></div>
+                        
                                              @foreach($tdus as $rdu)
                                         <?php $user=\App\Models\User::find($rdu->user_id);?>
                                         <div class="mySlides2">
 
     <div style="margin-left:50px;margin-top:20px;">
     @if($user->gender==1)
-    <img class="avatar xl rounded-circle" src="http://localhost:8000/assets/images/avatar2.jpg" alt="profile">
+    <img class="avatar xl rounded-circle" src="http://localhost:8000/assets/images/lg/avatar12.jpg" alt="profile">
     @else
     <img class="avatar xl rounded-circle" src="http://localhost:8000/assets/images/lg/avatar5.jpg" alt="profile">
     @endif

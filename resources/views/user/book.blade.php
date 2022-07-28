@@ -324,7 +324,7 @@
                             <textarea name="description" class="form-control" id="exampleFormControlTextarea78" rows="3" placeholder="Add any extra details"></textarea>
                         </div> 
                         <div>
-                    <label for="exampleFormControlInput877" class="form-label">Conference Proceeding Information</label>
+                    <!-- <label for="exampleFormControlInput877" class="form-label">Conference Proceeding Information</label>
                     <div class="mb-3">     
                             <label for="exampleFormControlInput877" class="form-label">Name</label>
                             <input name="conference_name" type="text" class="form-control" id="exampleFormControlInput877" placeholder="Enter Conference Name">
@@ -341,15 +341,15 @@
                             <label for="exampleFormControlInput877" class="form-label">Organization Name</label>
                             <input name="conference_organization_name" type="text" class="form-control" id="exampleFormControlInput877" placeholder="Enter Conference Organization Name">
                         </div>
-                        <!--<div class="mb-3">     
+                        <div class="mb-3">     
                             <label for="exampleFormControlInput877" class="form-label">Title</label>
                             <input name="conference_title" type="text" class="form-control" id="exampleFormControlInput877" placeholder="Enter Conference Title">
                         </div>
                         <div class="mb-3">     
                             <label for="exampleFormControlInput877" class="form-label">Title of Paper Presented</label>
                             <input name="title_of_paper" type="text" class="form-control" id="exampleFormControlInput877" placeholder="Enter Title of Paper Presented">
-                        </div>-->
-                    </div>
+                        </div>
+                    </div> -->
 
                     </div>
                     

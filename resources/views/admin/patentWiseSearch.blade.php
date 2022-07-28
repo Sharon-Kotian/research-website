@@ -91,7 +91,7 @@ function exportData(){
     
 <style>
         table,th,td{
-            border:1px solid black;
+            /* border:1px solid black; */
             cell-padding:5px;
         }
     </style>
@@ -104,7 +104,7 @@ function exportData(){
     <!-- sidebar -->
     <div class="sidebar px-4 py-4 py-md-5 me-0">
         <div class="d-flex flex-column h-100">
-            <a href="{{url('user/dashboard')}}" class="mb-0 brand-icon">
+            <a href="{{url('admin/basicSearchDashboard')}}" class="mb-0 brand-icon">
                 <span class="logo-icon">
                     <svg  width="35" height="35" fill="currentColor" class="bi bi-clipboard-check" viewBox="0 0 16 16">
                         <path fill-rule="evenodd" d="M10.854 7.146a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L7.5 9.793l2.646-2.647a.5.5 0 0 1 .708 0z"/>
@@ -240,15 +240,19 @@ function exportData(){
 <?php $domains= \App\Models\Patent::all()->unique('domain'); ?>
                         <form method="post" enctype="multipart/form-data" action="{{ url('admin/searchPatent')}}">
                             @csrf
-                <label for="nameSearch" class="form-label">Name</label>
+                            <table style="width:1000px;">
+<tr>
+    <td>
+    <label for="nameSearch" class="form-label">Name</label>
                 <select class="form-control" id="nameSearch" name="name_search">
                     <option value="all" selected>--SELECT ALL--</option>
                     @foreach($us as $u)
                         <option value="{{$u->id}}">{{$u->firstName}} {{$u->lastName}}</option>
                     @endforeach
                 </select>
-                <br><br>
-                <label for="year_search" class="form-label">Year</label>
+    </td>
+    <td>
+    <label for="year_search" class="form-label">Year</label>
                 <select name="year_search">
                 <option value="null" selected>--SELECT ALL--</option>
 
@@ -311,7 +315,28 @@ function exportData(){
 
 
                     
-                </select><br><br>
+                </select>
+    </td>
+    <td>
+    <label for="domain_search" class="form-label">Domain</label>
+                <select name="domain_search[]" id="domains" multiple="multiple">
+                    @foreach($domains as $domain)
+                        <option>{{$domain->domain}}</option>
+                    @endforeach
+                </select>
+    </td>
+    <td>
+    <label for="status_search" class="form-label">Status</label>
+                <select name="status_search[]" id="status_search" multiple="multiple">
+                    
+                    <option>Submitted</option>
+                    <option>Granted</option>
+                </select>
+    </td>
+</tr>
+</table>
+                
+               
                 
                 <!-- <input type="checkbox" name="domain_search[]" value="all" checked>--SELECT ALL--<br> -->
                 <!-- @foreach($domains as $domain)
@@ -324,18 +349,8 @@ function exportData(){
                                   </label>
                                   @endforeach -->
 
-                <label for="domain_search" class="form-label">Domain</label>
-                <select name="domain_search[]" id="domains" multiple="multiple">
-                    @foreach($domains as $domain)
-                        <option>{{$domain->domain}}</option>
-                    @endforeach
-                </select>
-                <label for="status_search" class="form-label">Status</label>
-                <select name="status_search[]" id="status_search" multiple="multiple">
-                    
-                    <option>Submitted</option>
-                    <option>Granted</option>
-                </select><br><br>
+                
+                <br><br>
 
                 <input class="btn-primary" type="submit" value="Search">
 
@@ -365,15 +380,17 @@ function exportData(){
                     
                     <div>
                         <br>
-
-                        <b>{{$user->firstName}} {{$user->lastName}}</b><br>
-                        <b>Patent Title :</b> {{$user->patent_title}}<br>
-                        <b>Granting Agency :</b> {{$user->granting_agency}}<br>
-                        <b>Year :</b> {{$user->year}}<br>
-                        <b>Status :</b> {{$user->status}}<br>
-                        <b>Domain :</b> {{$user->domain}}<br>
-                        <b>Patent Holders :</b> {{$user->patent_holders}}<br>
-                        <b>Patent Link :</b> {{$user->patent_link}}<br>
+                        <h6><b>{{$user->patent_title}}</b></h6>
+                        {{$user->firstName}} {{$user->lastName}}&nbsp;|&nbsp;{{$user->granting_agency}}&nbsp;|&nbsp;{{$user->year}}<br>
+                        {{$user->status}}&nbsp;|&nbsp;{{$user->domain}}<br>
+                        {{$user->patent_holders}}&nbsp;|&nbsp;{{$user->patent_link}}<br>
+                        <!-- Patent Title : <br>
+                        Granting Agency : <br>
+                        Year : <br>
+                        Status : <br>
+                        Domain : <br>
+                        Patent Holders : <br>
+                        Patent Link : <br> -->
 
                         <a href="{{url('/admin/downloadPatent')}}/{{$user->patent_pdf_path}}"><i class="icofont-bubble-down"></i>Download</a>
 

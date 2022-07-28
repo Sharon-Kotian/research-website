@@ -145,8 +145,8 @@
                 <?php
                     $edus=\App\Models\Patent::where("user_id",$user->id)->count();
                     $edus1=\App\Models\Paper::where("user_id",$user->id)->count();
-                    $edus2=\App\Models\Book::where("user_id",$user->id)->count();
-                    $edus3=\App\Models\Book::where("user_id",$user->id)->count();
+                    $edus2=\App\Models\Book::where("user_id",$user->id)->where("type","Book")->count();
+                    $edus3=\App\Models\Book::where("user_id",$user->id)->where("type","Book Chapter")->count();
                 ?>
                 
                 
@@ -172,7 +172,7 @@
                                 </div>-->
                                 <div class="teacher-info border-start ps-xl-4 ps-md-3 ps-sm-4 ps-4 w-100 h-100 ">
                                 <i class="icofont-certificate-alt-1 icofont-10x"></i>
-                                <div style="margin-left:300px; margin-top:-100px;"><h6 class="mb-0 mt-2  fw-bold d-block" style="font-size:30px;">Papers</h6><h5 class="mb-0 mt-2  fw-bold d-block" style="font-size:30px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{$edus}}</h5></div>
+                                <div style="margin-left:300px; margin-top:-100px;"><h6 class="mb-0 mt-2  fw-bold d-block" style="font-size:30px;">Patents</h6><h5 class="mb-0 mt-2  fw-bold d-block" style="font-size:30px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{$edus}}</h5></div>
                                     
                                 </div>
                             </div>

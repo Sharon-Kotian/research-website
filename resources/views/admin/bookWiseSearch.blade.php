@@ -24,6 +24,18 @@
             $("#type_search").select2();
 });
 
+function abstract_view(id){
+    if(document.getElementById('abstract'+id).style.display==="none"){
+        document.getElementById('abstract'+id).style.display="block";
+        //document.getElementById('abstract_para').style.display="none";
+        //flag=1;
+    }
+    else{
+        document.getElementById('abstract'+id).style.display="none";
+        //document.getElementById('abstract_para').style.display="block";
+        //flag=0;
+    }
+}
 
 
 function exportData(){
@@ -92,7 +104,7 @@ function exportData(){
     
 <style>
         table,th,td{
-            border:1px solid black;
+            /* border:1px solid black; */
             cell-padding:5px;
         }
     </style>
@@ -105,7 +117,7 @@ function exportData(){
     <!-- sidebar -->
     <div class="sidebar px-4 py-4 py-md-5 me-0">
         <div class="d-flex flex-column h-100">
-            <a href="{{url('user/dashboard')}}" class="mb-0 brand-icon">
+            <a href="{{url('admin/basicSearchDashboard')}}" class="mb-0 brand-icon">
                 <span class="logo-icon">
                     <svg  width="35" height="35" fill="currentColor" class="bi bi-clipboard-check" viewBox="0 0 16 16">
                         <path fill-rule="evenodd" d="M10.854 7.146a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L7.5 9.793l2.646-2.647a.5.5 0 0 1 .708 0z"/>
@@ -240,17 +252,20 @@ function exportData(){
 <?php $domains= \App\Models\Education::all()->unique('field_of_study'); ?>
                         <form method="post" enctype="multipart/form-data" action="{{ url('admin/searchBook')}}">
                             @csrf
-                <label for="nameSearch" class="form-label">Name</label>
+
+                            <table style="width:1200px;border:none;">
+                                <tr>
+                                    <td>
+                                    <label for="nameSearch" class="form-label">Name</label>
                 <select class="form-control" id="nameSearch" name="name_search">
                     <option value="all" selected>--SELECT ALL--</option>
                     @foreach($us as $u)
                         <option value="{{$u->id}}">{{$u->firstName}} {{$u->lastName}}</option>
                     @endforeach
                 </select>
-                <br><br>
-
-
-                <label for="year_search" class="form-label">Year</label>
+                                    </td>
+                                    <td>
+                                    <label for="year_search" class="form-label">Year</label>
                 <select name="year_search">
                 <option value="null" selected>--SELECT ALL--</option>
 
@@ -313,7 +328,44 @@ function exportData(){
 
 
                     
-                </select><br><br>
+                </select> 
+                                    </td>
+                                    <td>
+                                    <label for="category_search" class="form-label">Categoy of Book</label>
+                <select name="category_search[]" id="category_search" multiple="multiple">
+                    
+                    <option>National</option>
+                    <option>International</option>
+                    <option>Indexing</option>
+                    <option>ABDC Listed</option>
+                    <option>UGC Listed</option>
+                    <option>Scopus</option>
+                </select>
+                                    </td>
+                                    <td>
+                                    <label for="status_search" class="form-label">Status</label>
+                <select name="status_search[]" id="status_search" multiple="multiple">
+                    
+                    <option>Published</option>
+                    <option>Accepted</option>
+                    <option>Under Review</option>
+                </select>
+                                    </td>
+                                    <td>
+                                    <label for="type_search" class="form-label">Type</label>
+                <select name="type_search[]" id="type_search" multiple="multiple">
+                    
+                    <option>Book</option>
+                    <option>Book Chapter</option>
+                </select>
+                                    </td>
+                                </tr>
+                            </table>
+                
+                <br><br>
+
+
+                <br><br>
 
 
 
@@ -336,29 +388,9 @@ function exportData(){
                         <option>{{$domain->field_of_study}}</option>
                     @endforeach
                 </select> -->
-                <label for="category_search" class="form-label">Categoy of Book</label>
-                <select name="category_search[]" id="category_search" multiple="multiple">
-                    
-                    <option>National</option>
-                    <option>International</option>
-                    <option>Indexing</option>
-                    <option>ABDC Listed</option>
-                    <option>UGC Listed</option>
-                    <option>Scopus</option>
-                </select>
-                <label for="status_search" class="form-label">Status</label>
-                <select name="status_search[]" id="status_search" multiple="multiple">
-                    
-                    <option>Published</option>
-                    <option>Accepted</option>
-                    <option>Under Review</option>
-                </select>
-                <label for="type_search" class="form-label">Type</label>
-                <select name="type_search[]" id="type_search" multiple="multiple">
-                    
-                    <option>Book</option>
-                    <option>Book Chapter</option>
-                </select><br><br>
+                
+                
+                <br><br>
 
                 <input class="btn-primary" type="submit" value="Search">
                 
@@ -389,22 +421,35 @@ function exportData(){
                     
                     <div>
                         <br>
+                        <h6>
+                        {{$user->book_title}}
+                        </h6>
+                        {{$user->firstName}} {{$user->lastName}}&nbsp;|&nbsp;{{$user->category_of_book}}&nbsp;|&nbsp;{{$user->type}}<br>
+                        {{$user->authors_co_authors}}&nbsp;|&nbsp;{{$user->publication_name}}&nbsp;|&nbsp;{{$user->year_of_publication}}<br>
+                        {{$user->book_link}}&nbsp;|&nbsp;{{$user->status}}&nbsp;|&nbsp;Volume:{{$user->volume}}<br>
+                        <a href="javascript:abstract_view({{$user->id}})"><i class="icofont-bubble-down"></i>Abstract</a>
 
-                        <b>{{$user->firstName}} {{$user->lastName}}</b><br>
-                        <b>Book Title :</b> {{$user->book_title}}<br>
-                        <b>Category of Book :</b> {{$user->category_of_book}}<br>
-                        <b>Type :</b> {{$user->type}}<br>
-                        <b>Authiors/Co-Authors :</b> {{$user->authors_co_authors}}<br>
-                        <b>Publication Name :</b> {{$user->publication_name}}<br>
-                        <b>Year of Publication :</b> {{$user->year_of_publication}}<br>
-                        <b>Status :</b> {{$user->status}}<br>
-                        <b>Book Link :</b> {{$user->book_link}}<br>
-                        <b>Volume :</b> {{$user->volume}}<br>
-                        <b>Abstract :</b> {{$user->description}}<br>
+                        <!-- Book Title : <br>
+                        Category of Book : <br>
+                        Type : <br>
+                        Authiors/Co-Authors : <br>
+                        Publication Name : <br>
+                        Year of Publication : <br>
+                        Status : <br>
+                       Book Link : <br>
+                        Volume : <br> -->
+                        <div id="abstract{{$user->id}}" style="display:none;">
+                            <div id="abstract_para">
+                            <p>
+                                {{$user->description}}
+                            </p>
+    </div>
+                        </div>
+                        <!-- Abstract : {{$user->description}}<br> -->
 
 
                         
-                    </div>
+                    </div><br><br>
                 @endforeach
         @endif
     </div> 

@@ -103,7 +103,7 @@ function exportData(){
     <!-- sidebar -->
     <div class="sidebar px-4 py-4 py-md-5 me-0">
         <div class="d-flex flex-column h-100">
-            <a href="{{url('user/dashboard')}}" class="mb-0 brand-icon">
+            <a href="{{url('admin/basicSearchDashboard')}}" class="mb-0 brand-icon">
                 <span class="logo-icon">
                     <svg  width="35" height="35" fill="currentColor" class="bi bi-clipboard-check" viewBox="0 0 16 16">
                         <path fill-rule="evenodd" d="M10.854 7.146a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L7.5 9.793l2.646-2.647a.5.5 0 0 1 .708 0z"/>
@@ -237,70 +237,78 @@ function exportData(){
 
                         <form method="post" enctype="multipart/form-data" action="{{ url('admin/searchConference')}}">
                             @csrf
-                
-                            <label for="nameSearch" class="form-label">Name</label>
+                            <table style="width:1000px;border:none">
+                <tr style="border:none">
+                    <td style="border:none">
+                    <label for="nameSearch" class="form-label">Name</label>
                             <select class="form-control" id="nameSearch" name="name_search">
                     <option value="all" selected>--SELECT ALL--</option>
                     @foreach($us as $u)
                         <option value="{{$u->id}}">{{$u->firstName}} {{$u->lastName}}</option>
                     @endforeach
                 </select>
-                <br><br>
-                <label for="year_search" class="form-label">Name</label>
+                    </td>
+                    <td style="border:none">
+                    <label for="year_search" class="form-label">Year</label>
 
-                <select name="year_search">
-                <option value="null" selected>--SELECT ALL--</option>
-                    <option>1980-1981</option>
-                    <option>1981-1982</option>
-                    <option>1982-1983</option>
-                    <option>1983-1984</option>
-                    <option>1984-1985</option>
-                    <option>1985-1986</option>
-                    <option>1986-1987</option>
-                    <option>1987-1988</option>
-                    <option>1988-1989</option>
-                    <option>1989-1990</option>
-                    <option>1990-1991</option>
-                    <option>1991-1992</option>
-                    <option>1992-1993</option>
-                    <option>1993-1994</option>
-                    <option>1994-1995</option>
-                    <option>1995-1996</option>
-                    <option>1996-1997</option>
-                    <option>1997-1998</option>
-                    <option>1998-1999</option>
-                    <option>1999-2000</option>
-                    <option>2000-2001</option>
-                    <option>2001-2002</option>
-                    <option>2002-2003</option>
-                    <option>2003-2004</option>
-                    <option>2004-2005</option>
-                    <option>2005-2006</option>
-                    <option>2006-2007</option>
-                    <option>2007-2008</option>
-                    <option>2008-2009</option>
-                    <option>2009-2010</option>
-                    <option>2010-2011</option>
-                    <option>2011-2012</option>
-                    <option>2012-2013</option>
-                    <option>2013-2014</option>
-                    <option>2014-2015</option>
-                    <option>2015-2016</option>
-                    <option>2016-2017</option>
-                    <option>2017-2018</option>
-                    <option>2018-2019</option>
-                    <option>2019-2020</option>
-                    <option>2020-2021</option>
-                    <option>2021-2022</option>
-                    <option>2022-2023</option>
-                    <option>2023-2024</option>
-                    <option>2024-2025</option>
-                    <option>2025-2026</option>
-                    <option>2026-2027</option>
-                    <option>2027-2028</option>
-                    <option>2028-2029</option>
-                    <option>2029-2030</option>
-                </select><br><br>
+<select name="year_search">
+<option value="null" selected>--SELECT ALL--</option>
+    <option>1980-1981</option>
+    <option>1981-1982</option>
+    <option>1982-1983</option>
+    <option>1983-1984</option>
+    <option>1984-1985</option>
+    <option>1985-1986</option>
+    <option>1986-1987</option>
+    <option>1987-1988</option>
+    <option>1988-1989</option>
+    <option>1989-1990</option>
+    <option>1990-1991</option>
+    <option>1991-1992</option>
+    <option>1992-1993</option>
+    <option>1993-1994</option>
+    <option>1994-1995</option>
+    <option>1995-1996</option>
+    <option>1996-1997</option>
+    <option>1997-1998</option>
+    <option>1998-1999</option>
+    <option>1999-2000</option>
+    <option>2000-2001</option>
+    <option>2001-2002</option>
+    <option>2002-2003</option>
+    <option>2003-2004</option>
+    <option>2004-2005</option>
+    <option>2005-2006</option>
+    <option>2006-2007</option>
+    <option>2007-2008</option>
+    <option>2008-2009</option>
+    <option>2009-2010</option>
+    <option>2010-2011</option>
+    <option>2011-2012</option>
+    <option>2012-2013</option>
+    <option>2013-2014</option>
+    <option>2014-2015</option>
+    <option>2015-2016</option>
+    <option>2016-2017</option>
+    <option>2017-2018</option>
+    <option>2018-2019</option>
+    <option>2019-2020</option>
+    <option>2020-2021</option>
+    <option>2021-2022</option>
+    <option>2022-2023</option>
+    <option>2023-2024</option>
+    <option>2024-2025</option>
+    <option>2025-2026</option>
+    <option>2026-2027</option>
+    <option>2027-2028</option>
+    <option>2028-2029</option>
+    <option>2029-2030</option>
+</select>
+                    </td>
+                </tr>
+            </table>         
+                <br><br>
+                <br><br>
                 
                
                 <input class="btn-primary" type="submit" value="Search">
@@ -308,7 +316,6 @@ function exportData(){
                 
                 
                 
-                <a href="{{url('/admin/file/download/4')}}" class="btn btn-primary">Download</a>
                 
                 
     </form>
